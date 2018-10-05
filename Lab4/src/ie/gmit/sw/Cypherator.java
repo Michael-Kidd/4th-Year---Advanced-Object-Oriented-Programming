@@ -1,14 +1,15 @@
 package ie.gmit.sw;
 
+import java.security.Key;
 
 public interface Cypherator {
 
-	String encrypt(String plainText) throws CypherException;
+	Key getKey();
 
-	String decrypt(String cypherText) throws CypherException;
+	void setKey(Key key);
 
-	byte[] encrypt(byte[] plainText) throws CypherException;
+	byte[] encrypt(byte[] plainText) throws Throwable;
 
-	byte[] decrypt(byte[] plainText) throws CypherException;
+	byte[] decrypt(byte[] cypherText) throws Throwable;
 
 }

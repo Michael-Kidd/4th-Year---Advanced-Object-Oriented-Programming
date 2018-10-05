@@ -1,6 +1,5 @@
 package ie.gmit.sw;
 
-
 public class VernamCypher extends AbstractCypher{
 
 	@Override

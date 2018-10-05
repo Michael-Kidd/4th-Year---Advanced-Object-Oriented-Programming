@@ -1,6 +1,5 @@
 package ie.gmit.sw;
 
-
 public class CeaserCypher extends AbstractCypher {
 
 	public CeaserCypher() throws CypherException {

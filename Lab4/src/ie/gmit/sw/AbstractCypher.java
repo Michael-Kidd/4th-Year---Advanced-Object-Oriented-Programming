@@ -1,48 +1,66 @@
 package ie.gmit.sw;
 
+import java.security.*;
+import javax.crypto.*;
 
-public abstract class AbstractCypher implements Cypherator {
+public class AbstractCypher implements Cypherator {
 	
-	private CypherKey key;
+	/* (non-Javadoc)
+	 * @see ie.gmit.sw.Cypherator#getKey()
+	 */
+	@Override
+	public Key getKey() {
+		return key;
+	}
+
+	/* (non-Javadoc)
+	 * @see ie.gmit.sw.Cypherator#setKey(java.security.Key)
+	 */
+	@Override
+	public void setKey(Key key) {
+		this.key = key;
+	}
+
+	private Key key;
+
+	private Cipher cypher;
 
 	public AbstractCypher() {
 		super();
 	}
 
 	/* (non-Javadoc)
-	 * @see ie.gmit.sw.Cypherator#encrypt(java.lang.String)
-	 */
-	@Override
-	public String encrypt(String plainText) throws CypherException {
-		return new String(encrypt(plainText.getBytes()));
-	}
-
-	/* (non-Javadoc)
-	 * @see ie.gmit.sw.Cypherator#decrypt(java.lang.String)
-	 */
-	@Override
-	public String decrypt(String cypherText) throws CypherException {
-		return new String(decrypt(cypherText.getBytes()));
-	}
-
-	public int getKey() {
-		return Integer.parseInt(key.getKey());
-	}
-
-	public void setKey(int k) throws CypherException {
-		this.key = new CypherKeyImpl();
-		this.key.setKey("" + k);
-	}
-	
-	/* (non-Javadoc)
 	 * @see ie.gmit.sw.Cypherator#encrypt(byte[])
 	 */
 	@Override
-	public abstract byte[] encrypt(byte[] plainText) throws CypherException;
+	public byte[] encrypt(byte[] plainText) throws Throwable {
+		
+		cypher.init(Cipher.ENCRYPT_MODE, key);
+		
+		return cypher.doFinal(plainText);
+	
+	}
+
 	/* (non-Javadoc)
 	 * @see ie.gmit.sw.Cypherator#decrypt(byte[])
 	 */
 	@Override
-	public abstract byte[] decrypt(byte[] plainText) throws CypherException;
+	public byte[] decrypt(byte[] cypherText) throws Throwable {
+		
+		cypher.init(Cipher.DECRYPT_MODE, key);
+		
+		return cypher.doFinal(cypherText);
+	
+	}
+
+	public Cipher getCypher() {
+		return cypher;
+	}
+
+	public void setCypher(Cipher cypher) {
+		this.cypher = cypher;
+	}
+	
+	
 
 }

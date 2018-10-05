@@ -1,6 +1,5 @@
 package ie.gmit.sw;
 
-
 public class CypherKeyImpl implements CypherKey{
 	
 	private String Key;
