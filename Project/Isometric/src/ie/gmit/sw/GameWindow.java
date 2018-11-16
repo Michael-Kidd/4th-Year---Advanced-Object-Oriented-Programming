@@ -7,6 +7,10 @@ public class GameWindow {
 	 * This matrix represents the isometric game model, with each number mapping to an
 	 * image in the images/ground/ directory.
 	 */
+	//Builders for different objects in place of this array
+	//eg. ground builder
+	// 
+	
 	private int[][] model = { 
 			{ 1, 0, 0, 0, 0, 0 , 0, 0, 0, 2},
 			{ 0, 1, 0, 0, 0, 0 , 0, 0, 0, 2},
