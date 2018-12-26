@@ -3,13 +3,6 @@ package ie.gmit.sw;
 import java.awt.*;
 import javax.swing.*;
 public class GameWindow {
-	/*
-	 * This matrix represents the isometric game model, with each number mapping to an
-	 * image in the images/ground/ directory.
-	 */
-	//Builders for different objects in place of this array
-	//eg. ground builder
-	// 
 	
 	private int[][] model = { 
 			{ 1, 0, 0, 0, 0, 0 , 0, 0, 0, 2},
@@ -39,13 +32,19 @@ public class GameWindow {
 	};
 	
 	public GameWindow() throws Exception {
-		GameView view = new GameView(model, objects);
+		
+		//Need to work on this
+		//GameView view = new GameView();
+		GameView view = new GameView(objects, model);
+		
 		Dimension d = new Dimension(GameView.DEFAULT_VIEW_SIZE, GameView.DEFAULT_VIEW_SIZE/2);
+	
 		view.setPreferredSize(d);
 		view.setMinimumSize(d);
 		view.setMaximumSize(d);
 
 		JFrame f = new JFrame("GMIT - B.Sc. in Computing (Software Development)");
+		
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.getContentPane().setLayout(new FlowLayout());
 		f.add(view);
@@ -54,5 +53,6 @@ public class GameWindow {
 		f.setLocation(100, 100);
 		f.pack();
 		f.setVisible(true);
+		
 	}
 }
