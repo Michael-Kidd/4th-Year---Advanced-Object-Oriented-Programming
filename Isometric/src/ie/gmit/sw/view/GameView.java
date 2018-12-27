@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.Timer;
 
-import ie.gmit.sw.controller.Generate;
-import ie.gmit.sw.controller.GenerateImpl;
+import ie.gmit.sw.Generate;
+import ie.gmit.sw.GenerateImpl;
 import ie.gmit.sw.model.Enemy;
 import ie.gmit.sw.model.Ground;
 import ie.gmit.sw.model.Item;
@@ -29,9 +29,15 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 
 	private Timer timer;
 
-	public GameView() throws Exception {
+	public GameView() {
 
-		init();
+		try {
+			
+			init();
+			
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "Game Objects Failed to Initialise", "View Failed", JOptionPane.ERROR_MESSAGE);
+		}
 
 		setBackground(Color.WHITE);
 		setDoubleBuffered(true);

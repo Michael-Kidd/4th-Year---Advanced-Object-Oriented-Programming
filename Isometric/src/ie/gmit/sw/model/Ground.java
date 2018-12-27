@@ -2,7 +2,7 @@ package ie.gmit.sw.model;
 
 import java.awt.image.BufferedImage;
 
-import ie.gmit.sw.controller.Point;
+import ie.gmit.sw.Point;
 
 public class Ground extends Tile{
 	

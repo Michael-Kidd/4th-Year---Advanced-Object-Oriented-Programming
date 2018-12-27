@@ -1,4 +1,4 @@
-package ie.gmit.sw.controller;
+package ie.gmit.sw;
 
 public class Point {
 	private int x;
