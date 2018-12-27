@@ -1,6 +1,9 @@
-package ie.gmit.sw;
+package ie.gmit.sw.builders;
 
 import java.awt.image.BufferedImage;
+
+import ie.gmit.sw.controller.Point;
+import ie.gmit.sw.model.Ground;
 
 public class GroundBuilder {
 
@@ -20,9 +23,9 @@ public class GroundBuilder {
 		this.image = image;
 		return this;
 	}
-	
-   public Ground createGround() {
-      return new Ground(pos, image);
-   }
+
+   public Ground build() {
+	   return new Ground(pos, image);
+	}
 
 }

@@ -1,17 +1,19 @@
-package ie.gmit.sw;
+package ie.gmit.sw.model;
 
 import java.awt.image.BufferedImage;
 
-public class Ground {
+import ie.gmit.sw.controller.Point;
+
+public class Item {
 	
 	private Point pos;
 	private BufferedImage image;
 	
-	public Ground() {
+	public Item() {
 		
 	}
 	
-	public Ground(Point p, BufferedImage i) {
+	public Item(Point p, BufferedImage i) {
 		this.pos = p;
 		this.image = i;
 	}
