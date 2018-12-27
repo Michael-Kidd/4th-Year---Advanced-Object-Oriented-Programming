@@ -9,6 +9,7 @@ public class ItemBuilder {
 
 	private Point pos;
 	private BufferedImage image;
+	private boolean isCollectable;
 	
 	public ItemBuilder() {
 		
@@ -18,6 +19,10 @@ public class ItemBuilder {
 		this.pos = pos;
 		return this;
 	}
+	
+	public void setCollectable(boolean isCollectable) {
+		this.isCollectable = isCollectable;
+	}
 
 	public ItemBuilder setImage(BufferedImage image) {
 		this.image = image;
@@ -25,7 +30,7 @@ public class ItemBuilder {
 	}
 
    public Item build() {
-	   return new Item(pos, image);
+	   return new Item(pos, image, isCollectable);
 	}
-
+	
 }

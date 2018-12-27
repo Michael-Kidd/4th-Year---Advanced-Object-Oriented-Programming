@@ -9,7 +9,7 @@ public class GameWindow {
 		
 		GameView view = new GameView();
 		
-		Dimension d = new Dimension(GameView.DEFAULT_VIEW_SIZE, GameView.DEFAULT_VIEW_SIZE/2);
+		Dimension d = new Dimension(GameView.getDefaultViewSize(), GameView.getDefaultViewSize()/2);
 	
 		view.setPreferredSize(d);
 		view.setMinimumSize(d);

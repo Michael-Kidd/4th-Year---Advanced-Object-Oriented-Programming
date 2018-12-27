@@ -9,6 +9,7 @@ public class GroundBuilder {
 
 	private Point pos;
 	private BufferedImage image;
+	private boolean isWalkable;
 	
 	public GroundBuilder() {
 		
@@ -24,8 +25,12 @@ public class GroundBuilder {
 		return this;
 	}
 
-   public Ground build() {
-	   return new Ground(pos, image);
+	public void setWalkable(boolean isWalkable) {
+		this.isWalkable = isWalkable;
+	}
+
+	public Ground build() {
+	   return new Ground(pos, image, isWalkable);
 	}
 
 }

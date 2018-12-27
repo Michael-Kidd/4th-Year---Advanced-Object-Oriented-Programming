@@ -4,31 +4,25 @@ import java.awt.image.BufferedImage;
 
 import ie.gmit.sw.controller.Point;
 
-public class Item {
+public class Item extends Tile{
 	
-	private Point pos;
-	private BufferedImage image;
+	private boolean isCollectable;
 	
 	public Item() {
-		
+		super();
 	}
 	
-	public Item(Point p, BufferedImage i) {
-		this.pos = p;
-		this.image = i;
+	public Item(Point p, BufferedImage i, Boolean c) {
+		super(p, i);
+		this.isCollectable = c;
 	}
-	
-	public Point getPos() {
-		return pos;
+
+	public boolean isCollectable() {
+		return isCollectable;
 	}
-	public BufferedImage getImage() {
-		return image;
-	}
-	public void setPos(Point pos) {
-		this.pos = pos;
-	}
-	public void setImage(BufferedImage image) {
-		this.image = image;
+
+	public void setCollectable(boolean isCollectable) {
+		this.isCollectable = isCollectable;
 	}
 	
 }
