@@ -32,11 +32,12 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 	public GameView() {
 
 		try {
-			
+
 			init();
-			
+
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, "Game Objects Failed to Initialise", "View Failed", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Game Objects Failed to Initialise", "View Failed",
+					JOptionPane.ERROR_MESSAGE);
 		}
 
 		setBackground(Color.WHITE);
@@ -49,9 +50,9 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 
 	private void init() throws Exception {
 
-		this.tileList = world.createGround(tileList, 0);
-		this.objectList = world.createObjects(objectList, 10);
-		this.enemyList = world.createEnemies(enemyList, 10);
+		tileList = world.createGround(tileList, 0);
+		objectList = world.createObjects(objectList, 10);
+		enemyList = world.createEnemies(enemyList, 10);
 
 	}
 
@@ -76,13 +77,9 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 	}
 
 	public void paint(Graphics2D g2, ArrayList<? extends Tile> list) {
-
 		for (Tile tile : list) {
-
 			g2.drawImage(tile.getImage(), tile.getPos().getX(), tile.getPos().getY(), null);
-
 		}
-
 	}
 
 	@Override

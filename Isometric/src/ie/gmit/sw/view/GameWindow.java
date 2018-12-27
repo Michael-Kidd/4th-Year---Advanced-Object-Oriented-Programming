@@ -5,6 +5,8 @@ import javax.swing.*;
 
 public class GameWindow {
 	
+	private static GameWindow window_instance = null;
+	
 	public GameWindow() {
 		
 		GameView view;
@@ -36,4 +38,13 @@ public class GameWindow {
 			}
 		
 	}
+	
+    public static GameWindow getInstance() 
+    { 
+        if (window_instance == null) 
+        	window_instance = new GameWindow(); 
+  
+        return window_instance; 
+    }
+    
 }
