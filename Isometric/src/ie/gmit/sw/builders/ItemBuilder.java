@@ -3,7 +3,7 @@ package ie.gmit.sw.builders;
 import java.awt.image.BufferedImage;
 
 import ie.gmit.sw.Point;
-import ie.gmit.sw.model.Item;
+import ie.gmit.sw.tiles.Item;
 
 public class ItemBuilder {
 

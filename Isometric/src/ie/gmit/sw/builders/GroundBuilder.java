@@ -3,7 +3,7 @@ package ie.gmit.sw.builders;
 import java.awt.image.BufferedImage;
 
 import ie.gmit.sw.Point;
-import ie.gmit.sw.model.Ground;
+import ie.gmit.sw.tiles.Ground;
 
 public class GroundBuilder {
 

@@ -1,20 +1,26 @@
 package ie.gmit.sw;
 
+import java.awt.image.BufferedImage;
+import java.util.EnumSet;
+import java.util.Iterator;
+
 import javax.swing.JOptionPane;
 
+import ie.gmit.sw.enums.GroundType;
+import ie.gmit.sw.enums.ObjectType;
 import ie.gmit.sw.view.GameWindow;
 
 public class Runner {
 	
 	public static void main(String[] args) throws Exception {
 
-		//Running the GUI in a seperate Thread
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			
 			public void run() {
 				
                 try {
-                	
+                	//Loads the tile images so they only need to be buffered once when the game starts
+                	loadResources();
                 	//Using the Game window as a Singleton
                 	GameWindow.getInstance();
 					
@@ -25,6 +31,14 @@ public class Runner {
 				
 			}
 		});
+	}
+	
+	public static void loadResources() {
+    	ResourceLoader g = new ResourceLoaderImpl();
+		Iterator<BufferedImage> itr = g.loadImages("./resources/images/ground");
+		EnumSet.allOf(GroundType.class).forEach(type -> (type).setImg(itr.next()));
+		Iterator<BufferedImage> itr2 = g.loadImages("./resources/images/objects");
+		EnumSet.allOf(ObjectType.class).forEach(type -> (type).setImg(itr2.next()));
 	}
 	
 }

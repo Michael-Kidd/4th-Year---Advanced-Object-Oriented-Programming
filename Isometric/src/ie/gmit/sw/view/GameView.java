@@ -7,12 +7,10 @@ import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.Timer;
 
-import ie.gmit.sw.Generate;
-import ie.gmit.sw.GenerateImpl;
-import ie.gmit.sw.model.Enemy;
-import ie.gmit.sw.model.Ground;
-import ie.gmit.sw.model.Item;
-import ie.gmit.sw.model.Tile;
+import ie.gmit.sw.tiles.Enemy;
+import ie.gmit.sw.tiles.Ground;
+import ie.gmit.sw.tiles.Item;
+import ie.gmit.sw.tiles.Tile;
 
 public class GameView extends JPanel implements ActionListener, KeyListener {
 

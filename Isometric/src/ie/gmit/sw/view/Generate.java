@@ -1,10 +1,10 @@
-package ie.gmit.sw;
+package ie.gmit.sw.view;
 
 import java.util.ArrayList;
 
-import ie.gmit.sw.model.Enemy;
-import ie.gmit.sw.model.Ground;
-import ie.gmit.sw.model.Item;
+import ie.gmit.sw.tiles.Enemy;
+import ie.gmit.sw.tiles.Ground;
+import ie.gmit.sw.tiles.Item;
 
 public interface Generate {
 
