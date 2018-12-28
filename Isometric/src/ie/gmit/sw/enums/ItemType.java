@@ -2,7 +2,7 @@ package ie.gmit.sw.enums;
 
 import java.awt.image.BufferedImage;
 
-public enum ObjectType {
+public enum ItemType {
 	blank (null, false), 
 	fountain (null, false), 
 	signPost (null, false), 
@@ -18,7 +18,7 @@ public enum ObjectType {
 	private BufferedImage img;
 	private final boolean isCollectable;
 	
-    private ObjectType(BufferedImage img, boolean collectable) {
+    private ItemType(BufferedImage img, boolean collectable) {
     	this.img = img;
     	this.isCollectable = collectable;
     }

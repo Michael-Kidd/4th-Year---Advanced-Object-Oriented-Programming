@@ -7,7 +7,7 @@ import java.util.Iterator;
 import javax.swing.JOptionPane;
 
 import ie.gmit.sw.enums.GroundType;
-import ie.gmit.sw.enums.ObjectType;
+import ie.gmit.sw.enums.ItemType;
 import ie.gmit.sw.view.GameWindow;
 
 public class Runner {
@@ -38,7 +38,7 @@ public class Runner {
 		Iterator<BufferedImage> itr = g.loadImages("./resources/images/ground");
 		EnumSet.allOf(GroundType.class).forEach(type -> (type).setImg(itr.next()));
 		Iterator<BufferedImage> itr2 = g.loadImages("./resources/images/objects");
-		EnumSet.allOf(ObjectType.class).forEach(type -> (type).setImg(itr2.next()));
+		EnumSet.allOf(ItemType.class).forEach(type -> (type).setImg(itr2.next()));
 	}
 	
 }
