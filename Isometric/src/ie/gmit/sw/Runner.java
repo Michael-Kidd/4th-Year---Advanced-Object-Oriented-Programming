@@ -34,7 +34,7 @@ public class Runner {
 	}
 	
 	public static void loadResources() {
-    	ResourceLoader g = new ResourceLoaderImpl();
+    	ImageLoader g = new ImageLoaderImpl();
 		Iterator<BufferedImage> itr = g.loadImages("./resources/images/ground");
 		EnumSet.allOf(GroundType.class).forEach(type -> (type).setImg(itr.next()));
 		Iterator<BufferedImage> itr2 = g.loadImages("./resources/images/objects");

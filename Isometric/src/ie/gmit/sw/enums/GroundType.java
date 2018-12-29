@@ -17,10 +17,8 @@ public enum GroundType{
 	private final boolean isWalkable;
 	
     private GroundType(BufferedImage img, boolean isWalkable) {
-    	
     	this.isWalkable = isWalkable;
     	this.img = img;
-        
     }
     
     public void setImg(BufferedImage img) {

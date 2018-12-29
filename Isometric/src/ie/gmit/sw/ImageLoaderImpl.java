@@ -10,7 +10,7 @@ import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 
-public class ResourceLoaderImpl implements ResourceLoader {
+public class ImageLoaderImpl implements ImageLoader {
 
 	
 	public Iterator<BufferedImage> loadImages(String directory) {

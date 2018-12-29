@@ -2,12 +2,12 @@ package ie.gmit.sw.builders;
 
 import java.awt.image.BufferedImage;
 
-import ie.gmit.sw.Point;
-import ie.gmit.sw.tiles.Enemy;
+import ie.gmit.sw.tiles.SpriteTile;
+import ie.gmit.sw.tiles.Position;
 
 public class EnemyBuilder {
 
-	private Point pos;
+	private Position pos;
 	private BufferedImage image;
 	private boolean engaged;
 	
@@ -15,7 +15,7 @@ public class EnemyBuilder {
 		
 	}
 	
-	public EnemyBuilder setPos(Point pos) {
+	public EnemyBuilder setPos(Position pos) {
 		this.pos = pos;
 		return this;
 	}
@@ -30,8 +30,8 @@ public class EnemyBuilder {
 		return this;
 	}
 
-   public Enemy build() {
-	   return new Enemy(pos, image, engaged);
+   public SpriteTile build() {
+	   return new SpriteTile(pos, image, engaged);
 	}
 
 }

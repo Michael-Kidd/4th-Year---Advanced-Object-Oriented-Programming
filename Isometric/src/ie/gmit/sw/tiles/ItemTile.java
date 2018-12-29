@@ -2,17 +2,18 @@ package ie.gmit.sw.tiles;
 
 import java.awt.image.BufferedImage;
 
-import ie.gmit.sw.Point;
+import ie.gmit.sw.enums.ItemType;
 
-public class Item extends Tile{
+public class ItemTile extends Tile{
 	
 	private boolean isCollectable;
+	private ItemType type;
 	
-	public Item() {
+	public ItemTile() {
 		super();
 	}
 	
-	public Item(Point p, BufferedImage i, Boolean c) {
+	public ItemTile(Position p, BufferedImage i, Boolean c) {
 		super(p, i);
 		this.isCollectable = c;
 	}
@@ -23,6 +24,14 @@ public class Item extends Tile{
 
 	public void setCollectable(boolean isCollectable) {
 		this.isCollectable = isCollectable;
+	}
+
+	public ItemType getType() {
+		return type;
+	}
+
+	public void setType(ItemType type) {
+		this.type = type;
 	}
 	
 }

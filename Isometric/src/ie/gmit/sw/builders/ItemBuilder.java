@@ -2,12 +2,12 @@ package ie.gmit.sw.builders;
 
 import java.awt.image.BufferedImage;
 
-import ie.gmit.sw.Point;
-import ie.gmit.sw.tiles.Item;
+import ie.gmit.sw.tiles.ItemTile;
+import ie.gmit.sw.tiles.Position;
 
 public class ItemBuilder {
 
-	private Point pos;
+	private Position pos;
 	private BufferedImage image;
 	private boolean isCollectable;
 	
@@ -15,7 +15,7 @@ public class ItemBuilder {
 		
 	}
 	
-	public ItemBuilder setPos(Point pos) {
+	public ItemBuilder setPos(Position pos) {
 		this.pos = pos;
 		return this;
 	}
@@ -29,8 +29,8 @@ public class ItemBuilder {
 		return this;
 	}
 
-   public Item build() {
-	   return new Item(pos, image, isCollectable);
+   public ItemTile build() {
+	   return new ItemTile(pos, image, isCollectable);
 	}
 	
 }
