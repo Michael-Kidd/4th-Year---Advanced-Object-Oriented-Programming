@@ -2,8 +2,8 @@ package ie.gmit.sw.builders;
 
 import java.awt.image.BufferedImage;
 
-import ie.gmit.sw.tiles.SpriteTile;
-import ie.gmit.sw.tiles.Position;
+import ie.gmit.sw.models.Position;
+import ie.gmit.sw.models.SpriteTile;
 
 public class EnemyBuilder {
 

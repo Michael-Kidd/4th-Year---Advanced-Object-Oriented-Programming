@@ -1,4 +1,4 @@
-package ie.gmit.sw.tiles;
+package ie.gmit.sw.models;
 
 import java.awt.image.BufferedImage;
 
@@ -13,9 +13,10 @@ public class ItemTile extends Tile{
 		super();
 	}
 	
-	public ItemTile(Position p, BufferedImage i, Boolean c) {
+	public ItemTile(Position p, BufferedImage i, Boolean c, ItemType type) {
 		super(p, i);
 		this.isCollectable = c;
+		this.type = type;
 	}
 
 	public boolean isCollectable() {

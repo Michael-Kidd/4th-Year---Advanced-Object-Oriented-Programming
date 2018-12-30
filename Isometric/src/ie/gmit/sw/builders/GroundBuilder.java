@@ -3,8 +3,8 @@ package ie.gmit.sw.builders;
 import java.awt.image.BufferedImage;
 
 import ie.gmit.sw.enums.GroundType;
-import ie.gmit.sw.tiles.GroundTile;
-import ie.gmit.sw.tiles.Position;
+import ie.gmit.sw.models.GroundTile;
+import ie.gmit.sw.models.Position;
 
 public class GroundBuilder {
 
@@ -41,7 +41,7 @@ public class GroundBuilder {
 		
 		if(this.image == null)
 			this.image = this.type.getImg();
-		if(this.isWalkable)
+		
 			this.isWalkable = this.type.isWalkable();
 		
 	   return new GroundTile(pos, image, isWalkable, type);

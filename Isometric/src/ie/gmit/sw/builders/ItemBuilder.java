@@ -2,14 +2,16 @@ package ie.gmit.sw.builders;
 
 import java.awt.image.BufferedImage;
 
-import ie.gmit.sw.tiles.ItemTile;
-import ie.gmit.sw.tiles.Position;
+import ie.gmit.sw.enums.ItemType;
+import ie.gmit.sw.models.ItemTile;
+import ie.gmit.sw.models.Position;
 
 public class ItemBuilder {
 
 	private Position pos;
 	private BufferedImage image;
 	private boolean isCollectable;
+	private ItemType type;
 	
 	public ItemBuilder() {
 		
@@ -20,17 +22,24 @@ public class ItemBuilder {
 		return this;
 	}
 	
-	public void setCollectable(boolean isCollectable) {
+	public ItemBuilder setCollectable(boolean isCollectable) {
 		this.isCollectable = isCollectable;
+		return this;
 	}
-
-	public ItemBuilder setImage(BufferedImage image) {
-		this.image = image;
+	
+	public ItemBuilder setType(ItemType type) {
+		this.type = type;
 		return this;
 	}
 
    public ItemTile build() {
-	   return new ItemTile(pos, image, isCollectable);
+	   
+		if(this.image == null)
+			this.image = this.type.getImg();
+
+			this.isCollectable = this.type.isCollectable();
+		
+	   return new ItemTile(pos, image, isCollectable, type);
 	}
 	
 }

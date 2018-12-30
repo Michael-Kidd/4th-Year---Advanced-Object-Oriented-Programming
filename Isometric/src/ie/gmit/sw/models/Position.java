@@ -1,4 +1,4 @@
-package ie.gmit.sw.tiles;
+package ie.gmit.sw.models;
 
 public class Position {
 	private int x;
