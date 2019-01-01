@@ -102,7 +102,6 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 			g2.drawImage(tile.getImage(), tile.getPos().getX(), tile.getPos().getY(), null);
 		}
 	}
-	
 	public void offsetPositions(int i, int offset) {
 		pos.setX( ((DEFAULT_SIZE - TILE_WIDTH) / 2) - (TILE_WIDTH / 2) * i + offset);
 		pos.setY((TILE_HEIGHT * i) / 2 - offset);
