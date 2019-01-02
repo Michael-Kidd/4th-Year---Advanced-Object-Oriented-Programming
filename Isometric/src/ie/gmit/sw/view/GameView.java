@@ -47,7 +47,7 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 
 		for(Tile t: grid.getTiles()) {
 			
-			g2.drawImage(t.getImage(), t.getPos().getX(),t.getPos().getY(), null);
+			g2.drawImage(t.getImage(), t.getPos().getX(), t.getPos().getY(), null);
 			
 		}
 

@@ -16,4 +16,7 @@ public interface Grid {
 	Position[][] getPositions();
 	
 	void setPositions(Position[][] p);
+	
+	Position position(int down, int across);
+	
 }

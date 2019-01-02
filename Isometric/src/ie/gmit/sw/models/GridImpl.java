@@ -9,47 +9,56 @@ public class GridImpl implements Grid {
 	
 	private static int DEFAULT_SIZE;
 	private int offset;
-	private static int tileHeight;
-	private static int tileWidth;
+	private int TILE_HEIGHT;
+	private int TILE_WIDTH;
 	
-	private static Position positions[][];
+	private Position positions[][];
 	private ArrayList <Tile> tiles = new ArrayList<>();
 	
-	private Position currentPos = new Position(DEFAULT_SIZE / 2, 0);
+	private Position pos = new Position(DEFAULT_SIZE / 2, 0);
 	
-	public GridImpl(int size, int v, int h, int tileH, int tileW, int offset) {
+	public GridImpl(int size, int down, int across, int tileH, int tileW, int offset) {
 		
-		positions = new Position[v][h];
+		positions = new Position[down][across];
 		
 		DEFAULT_SIZE = size;
-		tileHeight = tileH;
-		tileWidth = tileW;
+		TILE_HEIGHT = tileH;
+		TILE_WIDTH = tileW;
 		this.offset = offset;
 		
-		createStartingPositions(v, h);
+		createStartingPositions(down, across);
 		
 	}
 	
-	private void createStartingPositions(int v, int h) {
+	/* This method will populate the default positions of the tiles
+	 * so that we can quickly get the position if needed
+	 */
+	private void createStartingPositions(int down, int across) {
 		
-		for(int i = 0; i < v; i++) {
+		for (int i = 0; i < down; i++) {
+					
+			offsetPositions(i, this.offset);
 			
-			this.currentPos.setX( ((DEFAULT_SIZE - tileWidth) / 2) - (tileWidth / 2) * i + offset);
-			this.currentPos.setY((tileHeight * i) / 2 - offset);
-			
-			for(int j = 0; j < v; j++) {
-				
-				positions[i][j] = new Position(this.currentPos.getX(),this.currentPos.getY());
-				this.currentPos.setX(tileWidth * j);
-				
-				this.currentPos.setX(this.currentPos.getX() + tileWidth / 2);
-				this.currentPos.setY(this.currentPos.getY() + tileHeight / 2);
-				
-			}
-			
+			for (int j = 0; j < across; j++) {
+				this.positions[i][j] = new Position(this.pos.getX(), this.pos.getY());
+				nextPosition();
+			}	
 		}
-		
 	}
+	
+	public Position position(int down, int across) {
+		return positions[down][across];
+	}
+	
+	public void offsetPositions(int i, int offset) {
+		pos.setX( ((DEFAULT_SIZE - TILE_WIDTH) / 2) - (TILE_WIDTH / 2) * i + offset);
+		pos.setY((TILE_HEIGHT * i) / 2 - offset);
+	}
+	
+	public void nextPosition() {
+		pos.setX(pos.getX() + TILE_WIDTH / 2);
+		pos.setY(pos.getY() + TILE_HEIGHT / 2);
+}
 
 	public ArrayList<Tile> getTiles() {
 		return tiles;
@@ -64,10 +73,10 @@ public class GridImpl implements Grid {
 	}
 
 	public Position[][] getPositions() {
-		return positions;
+		return this.positions;
 	}
 
 	public void setPositions(Position[][] p) {
-		positions = p;
+		this.positions = p;
 	}
 }

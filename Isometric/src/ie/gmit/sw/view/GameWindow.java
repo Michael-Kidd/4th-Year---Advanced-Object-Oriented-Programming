@@ -5,28 +5,34 @@ import javax.swing.*;
 
 import ie.gmit.sw.Grid;
 import ie.gmit.sw.builders.GroundBuilder;
+import ie.gmit.sw.builders.ItemBuilder;
 import ie.gmit.sw.enums.GroundType;
+import ie.gmit.sw.enums.ItemType;
 import ie.gmit.sw.models.GridImpl;
 import ie.gmit.sw.models.GroundTile;
-import ie.gmit.sw.models.Position;
-import ie.gmit.sw.models.Tile;
+import ie.gmit.sw.models.ItemTile;
 
 public class GameWindow {
 
 	private static GameWindow window_instance = null;
 	
+	//default size of the scene
 	private static final int DEFAULT_SIZE = 1280;
+	//the number of tiles across
 	private static final int VERTCIALCELLS = 10;
+	//the number of tiles down
 	private static final int HORIZONTINALCELLS = 10;
+	//the width of each tile measured in pixels
 	private static final int TILEHEIGHT = 128;
+	//the height of each tile measured in pixels
 	private static final int TILEWIDTH = 64;
 	
 	//Lower Grid
-	private Grid g1 = new GridImpl(DEFAULT_SIZE, VERTCIALCELLS, HORIZONTINALCELLS, TILEHEIGHT, TILEWIDTH, 0);
-	
+	private Grid g1 = new GridImpl(DEFAULT_SIZE, VERTCIALCELLS, HORIZONTINALCELLS, TILEWIDTH, TILEHEIGHT, 0);
 	//UpperGrid
-	private Grid g2 = new GridImpl(DEFAULT_SIZE, VERTCIALCELLS, HORIZONTINALCELLS, TILEHEIGHT, TILEWIDTH, 10);
+	private Grid g2 = new GridImpl(DEFAULT_SIZE, VERTCIALCELLS, HORIZONTINALCELLS, TILEWIDTH, TILEHEIGHT, 10);
 	
+	//the panel we will show in the window - eg. Game area
 	private GameView view;
 
 	public GameWindow() {
@@ -55,13 +61,6 @@ public class GameWindow {
 			f.pack();
 			f.setVisible(true);
 			
-			GroundBuilder tBuilder = new GroundBuilder();
-			tBuilder.setType(GroundType.grass);
-			tBuilder.setPos(g1.getPositions()[0][0]);
-			GroundTile tile = tBuilder.build();
-			
-			g1.addTile(tile);
-			
 		}
 		catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "User Interface Failed to Start \n +"+ e +"", "Failed to Start", JOptionPane.ERROR_MESSAGE);
@@ -79,3 +78,33 @@ public class GameWindow {
     }
     
 }
+
+
+/*			for(int i = 0; i< 10; i++) {
+				
+				for(int j = 0; j< 10; j++) {
+					
+					GroundBuilder tBuilder = new GroundBuilder();
+					tBuilder.setType(GroundType.grass);
+					tBuilder.setPos(g1.position(i,j));
+					GroundTile tile = tBuilder.build();
+					
+					g1.addTile(tile);
+				}
+				
+			}
+			
+			for(int i = 0; i< 10; i++) {
+				
+				for(int j = 0; j< 10; j++) {
+					
+					ItemBuilder iBuilder = new ItemBuilder();
+					iBuilder.setType(ItemType.chest);
+					iBuilder.setPos(g1.position(i,j));
+					ItemTile tile = iBuilder.build();
+					
+					g1.addTile(tile);
+				}
+				
+			}
+ */
