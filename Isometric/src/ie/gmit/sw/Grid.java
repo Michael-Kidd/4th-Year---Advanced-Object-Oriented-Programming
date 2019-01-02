@@ -19,4 +19,6 @@ public interface Grid {
 	
 	Position position(int down, int across);
 	
+	boolean ocupied(int a, int b);
+	
 }

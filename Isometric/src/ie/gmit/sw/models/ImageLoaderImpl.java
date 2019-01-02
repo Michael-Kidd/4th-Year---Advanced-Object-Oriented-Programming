@@ -1,4 +1,4 @@
-package ie.gmit.sw;
+package ie.gmit.sw.models;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -9,6 +9,8 @@ import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
+
+import ie.gmit.sw.ImageLoader;
 
 public class ImageLoaderImpl implements ImageLoader {
 

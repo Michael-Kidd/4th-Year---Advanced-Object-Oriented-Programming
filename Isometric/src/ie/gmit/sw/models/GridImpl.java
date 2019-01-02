@@ -58,7 +58,7 @@ public class GridImpl implements Grid {
 	public void nextPosition() {
 		pos.setX(pos.getX() + TILE_WIDTH / 2);
 		pos.setY(pos.getY() + TILE_HEIGHT / 2);
-}
+	}
 
 	public ArrayList<Tile> getTiles() {
 		return tiles;
@@ -70,6 +70,10 @@ public class GridImpl implements Grid {
 	
 	public void addTile(Tile t) {
 		tiles.add(t);
+	}
+	
+	public boolean ocupied(int a, int b) {
+		return tiles.stream().filter(o -> o.getPos().equals(positions[a][b])).findFirst().isPresent();
 	}
 
 	public Position[][] getPositions() {

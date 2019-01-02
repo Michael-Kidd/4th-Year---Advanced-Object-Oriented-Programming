@@ -4,13 +4,8 @@ import java.awt.*;
 import javax.swing.*;
 
 import ie.gmit.sw.Grid;
-import ie.gmit.sw.builders.GroundBuilder;
-import ie.gmit.sw.builders.ItemBuilder;
-import ie.gmit.sw.enums.GroundType;
-import ie.gmit.sw.enums.ItemType;
+import ie.gmit.sw.MatchJohnsDemo;
 import ie.gmit.sw.models.GridImpl;
-import ie.gmit.sw.models.GroundTile;
-import ie.gmit.sw.models.ItemTile;
 
 public class GameWindow {
 
@@ -61,6 +56,9 @@ public class GameWindow {
 			f.pack();
 			f.setVisible(true);
 			
+			MatchJohnsDemo.addGroundTiles(VERTCIALCELLS, HORIZONTINALCELLS, g1);
+			MatchJohnsDemo.addSprites(VERTCIALCELLS, HORIZONTINALCELLS, g1);
+			
 		}
 		catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "User Interface Failed to Start \n +"+ e +"", "Failed to Start", JOptionPane.ERROR_MESSAGE);
@@ -68,43 +66,38 @@ public class GameWindow {
 		}
 
 	}
-	
-    public static GameWindow getInstance() 
-    { 
+
+	public static GameWindow getInstance() 
+    {
         if (window_instance == null) 
         	window_instance = new GameWindow();
   
-        return window_instance; 
+        return window_instance;
     }
+
+	public static int getHorizontinalcells() {
+		return HORIZONTINALCELLS;
+	}
+	
+	public static int getVertcialcells() {
+		return VERTCIALCELLS;
+	}
+	
+	public Grid getG1() {
+		return g1;
+	}
+
+	public void setG1(Grid g1) {
+		this.g1 = g1;
+	}
+
+	public Grid getG2() {
+		return g2;
+	}
+
+	public void setG2(Grid g2) {
+		this.g2 = g2;
+	}
+
     
 }
-
-
-/*			for(int i = 0; i< 10; i++) {
-				
-				for(int j = 0; j< 10; j++) {
-					
-					GroundBuilder tBuilder = new GroundBuilder();
-					tBuilder.setType(GroundType.grass);
-					tBuilder.setPos(g1.position(i,j));
-					GroundTile tile = tBuilder.build();
-					
-					g1.addTile(tile);
-				}
-				
-			}
-			
-			for(int i = 0; i< 10; i++) {
-				
-				for(int j = 0; j< 10; j++) {
-					
-					ItemBuilder iBuilder = new ItemBuilder();
-					iBuilder.setType(ItemType.chest);
-					iBuilder.setPos(g1.position(i,j));
-					ItemTile tile = iBuilder.build();
-					
-					g1.addTile(tile);
-				}
-				
-			}
- */

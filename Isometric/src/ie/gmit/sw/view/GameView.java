@@ -6,7 +6,9 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.Timer;
 
+import ie.gmit.sw.enums.Direction;
 import ie.gmit.sw.Grid;
+import ie.gmit.sw.models.SpriteTile;
 import ie.gmit.sw.models.Tile;
 
 public class GameView extends JPanel implements ActionListener, KeyListener {
@@ -17,6 +19,8 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 
 	private Grid grid1;
 	private Grid grid2;
+	
+	private SpriteTile player;
 
 	public GameView() {
 
@@ -39,18 +43,14 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 		Graphics2D g2 = (Graphics2D) g;
 
 		paint(g2, grid1);
-		//paint(g2, grid2);
+		paint(g2, grid2);
 		
 	}
 
 	public void paint(Graphics2D g2, Grid grid) {
-
 		for(Tile t: grid.getTiles()) {
-			
-			g2.drawImage(t.getImage(), t.getPos().getX(), t.getPos().getY(), null);
-			
+			g2.drawImage(t.getImage(), t.getPos().getX(), t.getPos().getY(), null);	
 		}
-
 	}
 	
 	public Grid getGrid1() {
@@ -71,6 +71,29 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 
 	@Override
 	public void keyPressed(KeyEvent e) {
+		
+		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+			player.setDirection(Direction.RIGHT);
+		}
+		else if (e.getKeyCode() == KeyEvent.VK_LEFT)
+		{
+			player.setDirection(Direction.LEFT);
+		}
+		else if (e.getKeyCode() == KeyEvent.VK_UP)
+		{
+			player.setDirection(Direction.UP);
+		} 
+		else if (e.getKeyCode() == KeyEvent.VK_DOWN)
+		{
+			player.setDirection(Direction.DOWN);
+		} 
+		else if (e.getKeyCode() == KeyEvent.VK_X)
+		{	
+			player.move();
+		} else {
+			return;
+		}
+		
 	}
 
 	@Override
