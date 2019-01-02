@@ -3,72 +3,71 @@ package ie.gmit.sw.models;
 import java.util.ArrayList;
 
 import ie.gmit.sw.Grid;
+import ie.gmit.sw.models.Position;
 
 public class GridImpl implements Grid {
 	
-	private int height;
-	private int width;
-	private ArrayList<Tile>[][] gridTiles;
+	private static int DEFAULT_SIZE;
+	private int offset;
+	private static int tileHeight;
+	private static int tileWidth;
 	
+	private static Position positions[][];
+	private ArrayList <Tile> tiles = new ArrayList<>();
 	
-	@Override
-	public void setGrid(ArrayList<Tile>[][] gridTiles) {
-		this.gridTiles = gridTiles;
+	private Position currentPos = new Position(DEFAULT_SIZE / 2, 0);
+	
+	public GridImpl(int size, int v, int h, int tileH, int tileW, int offset) {
+		
+		positions = new Position[v][h];
+		
+		DEFAULT_SIZE = size;
+		tileHeight = tileH;
+		tileWidth = tileW;
+		this.offset = offset;
+		
+		createStartingPositions(v, h);
+		
 	}
-
-	@Override
-	public ArrayList<Tile>[][] getGrid() {
-		return gridTiles;	
-	}
-
-	@Override
-	public int getHeight() {
-		// TODO Auto-generated method stub
-		return height;
-	}
-
-	@Override
-	public void setHeight(int height) {
-		this.height = height;		
-	}
-
-	@Override
-	public int getWidth() {
-		return width;
-	}
-
-	@Override
-	public void setWidth(int width) {
-		this.width = width;
-	}
-
-	@Override
-	public void moveTileLeft() {
-		// TODO Auto-generated method stub
+	
+	private void createStartingPositions(int v, int h) {
+		
+		for(int i = 0; i < v; i++) {
+			
+			this.currentPos.setX( ((DEFAULT_SIZE - tileWidth) / 2) - (tileWidth / 2) * i + offset);
+			this.currentPos.setY((tileHeight * i) / 2 - offset);
+			
+			for(int j = 0; j < v; j++) {
+				
+				positions[i][j] = new Position(this.currentPos.getX(),this.currentPos.getY());
+				this.currentPos.setX(tileWidth * j);
+				
+				this.currentPos.setX(this.currentPos.getX() + tileWidth / 2);
+				this.currentPos.setY(this.currentPos.getY() + tileHeight / 2);
+				
+			}
+			
+		}
 		
 	}
 
-	@Override
-	public void moveTileRight() {
-		// TODO Auto-generated method stub
-		
+	public ArrayList<Tile> getTiles() {
+		return tiles;
 	}
 
-	@Override
-	public void moveTileUp() {
-		// TODO Auto-generated method stub
-		
+	public void setTiles(ArrayList<Tile> t) {
+		tiles = t;
+	}
+	
+	public void addTile(Tile t) {
+		tiles.add(t);
 	}
 
-	@Override
-	public void moveTileDown() {
-		// TODO Auto-generated method stub
-		
+	public Position[][] getPositions() {
+		return positions;
 	}
 
-	@Override
-	public void emptyTile() {
-		
+	public void setPositions(Position[][] p) {
+		positions = p;
 	}
-
 }

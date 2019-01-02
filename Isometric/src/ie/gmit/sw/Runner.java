@@ -28,6 +28,7 @@ public class Runner {
 				} catch (Exception e) {
 					//If the GUI fails to load
 					JOptionPane.showMessageDialog(null, "Failed to start program", "Failure", JOptionPane.ERROR_MESSAGE);
+					e.printStackTrace();
 				}
 				
 			}

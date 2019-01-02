@@ -2,23 +2,18 @@ package ie.gmit.sw;
 
 import java.util.ArrayList;
 
+import ie.gmit.sw.models.Position;
 import ie.gmit.sw.models.Tile;
 
 public interface Grid {
 	
-	ArrayList<Tile>[][] getGrid();
-	void setGrid(ArrayList<Tile>[][] gridTiles); 
+	ArrayList<Tile> getTiles();
 	
-	int getHeight();
-	void setHeight(int height);
-	int getWidth();
-	void setWidth(int width);
+	void setTiles(ArrayList<Tile> t);
 	
-	void moveTileLeft();
-	void moveTileRight();
-	void moveTileUp();
-	void moveTileDown();
-	
-	void emptyTile();
+	void addTile(Tile t);
 
+	Position[][] getPositions();
+	
+	void setPositions(Position[][] p);
 }

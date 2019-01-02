@@ -2,19 +2,11 @@ package ie.gmit.sw.view;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.util.ArrayList;
 
 import javax.swing.*;
 import javax.swing.Timer;
 
-import ie.gmit.sw.builders.GroundBuilder;
-import ie.gmit.sw.builders.ItemBuilder;
-import ie.gmit.sw.enums.GroundType;
-import ie.gmit.sw.enums.ItemType;
-import ie.gmit.sw.models.GroundTile;
-import ie.gmit.sw.models.ItemTile;
-import ie.gmit.sw.models.Position;
-import ie.gmit.sw.models.SpriteTile;
+import ie.gmit.sw.Grid;
 import ie.gmit.sw.models.Tile;
 
 public class GameView extends JPanel implements ActionListener, KeyListener {
@@ -22,59 +14,14 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 	private static final long serialVersionUID = 777L;
 	
 	private Timer timer;
-	
-	private static final int DEFAULT_SIZE = 1280;
-	private static final int TILE_WIDTH = 128;
-	private static final int TILE_HEIGHT = 64;
-	
-	private Position pos = new Position(DEFAULT_SIZE / 2, 0);
-	
-	private ArrayList<GroundTile> groundList = new ArrayList<>();
-	private ArrayList<ItemTile> itemList = new ArrayList<>();
-	private ArrayList<SpriteTile> spriteList = new ArrayList<>();
+
+	private Grid grid1;
+	private Grid grid2;
 
 	public GameView() {
 
 		setBackground(Color.WHITE);
 		setDoubleBuffered(true);
-		
-		for (int i = 0; i < 10; i++) {
-			
-			offsetPositions(i, 0);
-			
-			for (int j = 0; j < 10; j++) {
-				
-				GroundBuilder tBuilder = new GroundBuilder();
-				tBuilder.setType(GroundType.grass);
-				tBuilder.setPos(new Position(pos.getX(), pos.getY()));
-				GroundTile tile = tBuilder.build();
-				
-				groundList.add(tile);
-
-				nextPosition();
-				
-			}
-			
-		}
-		
-		for (int i = 0; i < 10; i++) {
-			
-			offsetPositions(i, 10);
-			
-			for (int j = 0; j < 10; j++) {
-				
-				ItemBuilder tBuilder = new ItemBuilder();
-				tBuilder.setType(ItemType.chest);
-				tBuilder.setPos(new Position(pos.getX(), pos.getY()));
-				ItemTile tile = tBuilder.build();
-				
-				itemList.add(tile);
-
-				nextPosition();
-				
-			}
-			
-		}
 
 		timer = new Timer(100, this);
 		timer.start();
@@ -91,25 +38,35 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 
 		Graphics2D g2 = (Graphics2D) g;
 
-		paint(g2, groundList);
-		paint(g2, itemList);
-		paint(g2, spriteList);
+		paint(g2, grid1);
+		//paint(g2, grid2);
 		
 	}
 
-	public void paint(Graphics2D g2, ArrayList<? extends Tile> list) {
-		for (Tile tile : list) {
-			g2.drawImage(tile.getImage(), tile.getPos().getX(), tile.getPos().getY(), null);
+	public void paint(Graphics2D g2, Grid grid) {
+
+		for(Tile t: grid.getTiles()) {
+			
+			g2.drawImage(t.getImage(), t.getPos().getX(),t.getPos().getY(), null);
+			
 		}
-	}
-	public void offsetPositions(int i, int offset) {
-		pos.setX( ((DEFAULT_SIZE - TILE_WIDTH) / 2) - (TILE_WIDTH / 2) * i + offset);
-		pos.setY((TILE_HEIGHT * i) / 2 - offset);
+
 	}
 	
-	public void nextPosition() {
-		pos.setX(pos.getX() + TILE_WIDTH / 2);
-		pos.setY(pos.getY() + TILE_HEIGHT / 2);
+	public Grid getGrid1() {
+		return grid1;
+	}
+
+	public void setGrid1(Grid g1) {
+		this.grid1 = g1;
+	}
+
+	public Grid getGrid2() {
+		return grid2;
+	}
+
+	public void setGrid2(Grid g2) {
+		this.grid2 = g2;
 	}
 
 	@Override
