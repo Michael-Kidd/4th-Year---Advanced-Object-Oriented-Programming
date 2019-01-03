@@ -1,7 +1,9 @@
 package ie.gmit.sw;
 
 import ie.gmit.sw.builders.GroundBuilder;
+import ie.gmit.sw.builders.ItemBuilder;
 import ie.gmit.sw.enums.GroundType;
+import ie.gmit.sw.enums.ItemType;
 import ie.gmit.sw.enums.SpriteFactory;
 import ie.gmit.sw.enums.SpriteFactory.Type;
 import ie.gmit.sw.models.GroundTile;
@@ -22,6 +24,11 @@ public class MatchJohnsDemo {
 	private static GroundBuilder beachBuilder = new GroundBuilder();
 	private static GroundBuilder mudBuilder = new GroundBuilder();
 	private static GroundBuilder gravelBuilder = new GroundBuilder();
+	
+	private static ItemBuilder treeBuilder = new ItemBuilder();
+	private static ItemBuilder signBuilder = new ItemBuilder();
+	private static ItemBuilder ladderBuilder = new ItemBuilder();
+	private static ItemBuilder chestBuilder = new ItemBuilder();
 	
 	private static Tile tile = null;
 
@@ -46,10 +53,99 @@ public class MatchJohnsDemo {
     	HORIZONTINALCELLS = h;
     	VERTCIALCELLS = v;
     	
+    	addTrees(g);
+    	addLadder(g);
+    	addSigns(g);
+    	addChests(g);
 
 	}
     
-    public static void addSprites(int v, int h, Grid g) {
+    private static void addChests(Grid g2) {
+    	
+		tile = chestBuilder.setType(ItemType.chest).setPos(g2.position(4, 4)).setIndex(4, 4).build();
+		g2.addTile(tile);
+		tile = chestBuilder.setType(ItemType.chest).setPos(g2.position(7, 9)).setIndex(7, 9).build();
+		g2.addTile(tile);
+		tile = chestBuilder.setType(ItemType.chest).setPos(g2.position(9, 5)).setIndex(9, 5).build();
+		g2.addTile(tile);
+		tile = chestBuilder.setType(ItemType.chest).setPos(g2.position(5, 0)).setIndex(5, 0).build();
+		g2.addTile(tile);
+	}
+
+	private static void addSigns(Grid g2) {
+		tile = signBuilder.setType(ItemType.signPost).setPos(g2.position(3, 2)).setIndex(3, 2).build();
+		g2.addTile(tile);
+	}
+
+	private static void addLadder(Grid g2) {
+		tile = ladderBuilder.setType(ItemType.ladder).setPos(g2.position(2, 9)).setIndex(2, 9).build();
+		g2.addTile(tile);
+	}
+
+	private static void addTrees(Grid g2) {
+    	
+		tile = treeBuilder.setType(ItemType.tree).setPos(g2.position(1, 0)).setIndex(1, 0).build();
+		g2.addTile(tile);
+		tile = treeBuilder.setType(ItemType.tree).setPos(g2.position(2, 0)).setIndex(2, 0).build();
+		g2.addTile(tile);
+		tile = treeBuilder.setType(ItemType.tree).setPos(g2.position(3, 0)).setIndex(3, 0).build();
+		g2.addTile(tile);
+		tile = treeBuilder.setType(ItemType.tree).setPos(g2.position(2, 1)).setIndex(2, 1).build();
+		g2.addTile(tile);
+		tile = treeBuilder.setType(ItemType.tree).setPos(g2.position(3, 1)).setIndex(3, 1).build();
+		g2.addTile(tile);
+		
+		tile = treeBuilder.setType(ItemType.tree).setPos(g2.position(0, 3)).setIndex(0, 3).build();
+		g2.addTile(tile);
+		tile = treeBuilder.setType(ItemType.tree).setPos(g2.position(0, 4)).setIndex(0, 4).build();
+		g2.addTile(tile);
+		tile = treeBuilder.setType(ItemType.tree).setPos(g2.position(0, 5)).setIndex(0, 5).build();
+		g2.addTile(tile);
+		tile = treeBuilder.setType(ItemType.tree).setPos(g2.position(0, 6)).setIndex(0, 6).build();
+		g2.addTile(tile);
+		tile = treeBuilder.setType(ItemType.tree).setPos(g2.position(0, 7)).setIndex(0, 7).build();
+		g2.addTile(tile);
+		tile = treeBuilder.setType(ItemType.tree).setPos(g2.position(0, 8)).setIndex(0, 8).build();
+		g2.addTile(tile);
+		
+		tile = treeBuilder.setType(ItemType.tree).setPos(g2.position(1, 4)).setIndex(1, 4).build();
+		g2.addTile(tile);
+		tile = treeBuilder.setType(ItemType.tree).setPos(g2.position(1, 5)).setIndex(1, 5).build();
+		g2.addTile(tile);
+		tile = treeBuilder.setType(ItemType.tree).setPos(g2.position(1, 6)).setIndex(1, 6).build();
+		g2.addTile(tile);
+		tile = treeBuilder.setType(ItemType.tree).setPos(g2.position(1, 7)).setIndex(1, 7).build();
+		g2.addTile(tile);
+		tile = treeBuilder.setType(ItemType.tree).setPos(g2.position(1, 8)).setIndex(1, 8).build();
+		g2.addTile(tile);
+		
+		tile = treeBuilder.setType(ItemType.tree).setPos(g2.position(2, 5)).setIndex(2, 5).build();
+		g2.addTile(tile);
+		tile = treeBuilder.setType(ItemType.tree).setPos(g2.position(2, 6)).setIndex(2, 6).build();
+		g2.addTile(tile);
+		tile = treeBuilder.setType(ItemType.tree).setPos(g2.position(2, 7)).setIndex(2, 7).build();
+		g2.addTile(tile);
+		tile = treeBuilder.setType(ItemType.tree).setPos(g2.position(2, 8)).setIndex(2, 8).build();
+		g2.addTile(tile);
+		
+		tile = treeBuilder.setType(ItemType.tree).setPos(g2.position(3, 6)).setIndex(3, 6).build();
+		g2.addTile(tile);
+		tile = treeBuilder.setType(ItemType.tree).setPos(g2.position(3, 7)).setIndex(3, 7).build();
+		g2.addTile(tile);
+		tile = treeBuilder.setType(ItemType.tree).setPos(g2.position(3, 8)).setIndex(3, 8).build();
+		g2.addTile(tile);
+		
+		tile = treeBuilder.setType(ItemType.tree).setPos(g2.position(4, 7)).setIndex(4, 7).build();
+		g2.addTile(tile);
+		tile = treeBuilder.setType(ItemType.tree).setPos(g2.position(4, 8)).setIndex(4, 8).build();
+		g2.addTile(tile);
+		
+		tile = treeBuilder.setType(ItemType.tree).setPos(g2.position(5, 8)).setIndex(5, 8).build();
+		g2.addTile(tile);
+		
+	}
+
+	public static void addSprites(int v, int h, Grid g) {
     	HORIZONTINALCELLS = h;
     	VERTCIALCELLS = v;
     	
@@ -64,11 +160,11 @@ public class MatchJohnsDemo {
     	return addPlayer(g);
 	}
     
-	private static SpriteTile addPlayer(Grid g) {
+	private static SpriteTile addPlayer(Grid g2) {
 		
 		Tile player = SpriteFactory.create(Type.player, 0, 0);
-		player.setPos(g.position(0, 0));
-		g.addTile(player);
+		player.setPos(g2.position(0, 0));
+		g2.addTile(player);
 		
 		return (SpriteTile) player;
 		

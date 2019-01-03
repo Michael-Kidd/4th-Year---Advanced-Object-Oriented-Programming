@@ -75,6 +75,22 @@ public class GridImpl implements Grid {
 	public boolean ocupied(int a, int b) {
 		return tiles.stream().filter(o -> o.getPos().equals(positions[a][b])).findFirst().isPresent();
 	}
+	
+	public GroundTile getGroundTile(int a, int b) {
+		
+		return (GroundTile) tiles.stream().filter(o -> o.getPos().equals(positions[a][b])).findFirst().get();
+	}
+	
+	public ItemTile getItemTile(int a, int b) {
+		
+		if(tiles.stream().filter(o -> o.getPos().equals(positions[a][b])).findFirst().isPresent()) {
+			
+			return (ItemTile) tiles.stream().filter(o -> o.getPos().equals(positions[a][b])).findFirst().get();
+			
+		}
+		
+		return null;
+	}
 
 	public Position[][] getPositions() {
 		return this.positions;
@@ -89,6 +105,7 @@ public class GridImpl implements Grid {
 		int[] index = {0, 0};
 		
 		for (int i = 0; i < positions.length; i++) {
+			
 			index[0] = i;
 			
 				for (int j = 0; j < positions[0].length; j++) {
