@@ -12,6 +12,8 @@ public class ItemBuilder {
 	private BufferedImage image;
 	private boolean isCollectable;
 	private ItemType type;
+	private int x;
+	private int y;
 	
 	public ItemBuilder() {
 		
@@ -31,6 +33,12 @@ public class ItemBuilder {
 		this.type = type;
 		return this;
 	}
+	
+	public ItemBuilder setIndex(int x, int y) {
+		this.x = x;
+		this.y = y;
+		return this;
+	}
 
    public ItemTile build() {
 	   
@@ -39,7 +47,7 @@ public class ItemBuilder {
 
 			this.isCollectable = this.type.isCollectable();
 		
-	   return new ItemTile(pos, image, isCollectable, type);
+	   return new ItemTile(pos, x, y, image, isCollectable, type);
 	}
 	
 }

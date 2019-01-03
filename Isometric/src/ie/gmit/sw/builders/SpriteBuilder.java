@@ -13,6 +13,8 @@ public class SpriteBuilder {
 	private List<BufferedImage> images;
 	private boolean engaged;
 	private SpriteType type;
+	private int x;
+	private int y;
 	
 	public SpriteBuilder() {
 		
@@ -38,6 +40,12 @@ public class SpriteBuilder {
 		return this;
 	}
 
+	public SpriteBuilder setIndex(int x, int y) {
+		this.x = x;
+		this.y = y;
+		return this;
+	}
+	
 	public SpriteTile build() {
 		
 		if(this.images == null)
@@ -45,7 +53,7 @@ public class SpriteBuilder {
 		
 		this.engaged = this.type.isEngaged();
 		
-	   return new SpriteTile(pos, images, engaged, type);
+	   return new SpriteTile(pos, x, y, images, engaged, type);
 	}
 
 }

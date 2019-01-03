@@ -13,8 +13,8 @@ public class GroundTile extends Tile{
 		super();
 	}
 	
-	public GroundTile(Position p, BufferedImage i, boolean w, GroundType type) {
-		super(p, i);
+	public GroundTile(Position p, int x, int y, BufferedImage i, boolean w, GroundType type) {
+		super(p, i, x, y);
 		this.isWalkable = w;
 		this.type = type;
 	}

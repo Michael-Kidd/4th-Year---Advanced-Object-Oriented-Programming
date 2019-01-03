@@ -21,4 +21,6 @@ public interface Grid {
 	
 	boolean ocupied(int a, int b);
 	
+	int[] getIndex(Position p);
+	
 }

@@ -1,9 +1,9 @@
 package ie.gmit.sw;
 
 import ie.gmit.sw.builders.GroundBuilder;
-import ie.gmit.sw.builders.SpriteBuilder;
 import ie.gmit.sw.enums.GroundType;
-import ie.gmit.sw.enums.SpriteType;
+import ie.gmit.sw.enums.SpriteFactory;
+import ie.gmit.sw.enums.SpriteFactory.Type;
 import ie.gmit.sw.models.GroundTile;
 import ie.gmit.sw.models.SpriteTile;
 import ie.gmit.sw.models.Tile;
@@ -23,29 +23,22 @@ public class MatchJohnsDemo {
 	private static GroundBuilder mudBuilder = new GroundBuilder();
 	private static GroundBuilder gravelBuilder = new GroundBuilder();
 	
-	private static SpriteBuilder playerBuilder = new SpriteBuilder();
-	
 	private static Tile tile = null;
-	
-	private static Grid g1;
-	private static Grid g2;
 
     public static void addGroundTiles(int v, int h, Grid g) {
     	
     	HORIZONTINALCELLS = h;
     	VERTCIALCELLS = v;
-    	
-    	g1 = g;
 		
-		rockTiles();
-		weedTiles();
-		sandTiles();
-		waterTiles();
-		beachTiles();
-		mudTiles();
-		gravelTiles();
+		rockTiles(g);
+		weedTiles(g);
+		sandTiles(g);
+		waterTiles(g);
+		beachTiles(g);
+		mudTiles(g);
+		gravelTiles(g);
 		
-    	fillBlankTilesWithGrass();
+    	fillBlankTilesWithGrass(g);
 
 	}
     
@@ -53,7 +46,6 @@ public class MatchJohnsDemo {
     	HORIZONTINALCELLS = h;
     	VERTCIALCELLS = v;
     	
-    	g2 = g;
 
 	}
     
@@ -61,7 +53,6 @@ public class MatchJohnsDemo {
     	HORIZONTINALCELLS = h;
     	VERTCIALCELLS = v;
     	
-    	g2 = g;
     	
 	}
     
@@ -69,157 +60,157 @@ public class MatchJohnsDemo {
     	HORIZONTINALCELLS = h;
     	VERTCIALCELLS = v;
     	
-    	g2 = g;
     	
-    	return addPlayer();
+    	return addPlayer(g);
 	}
     
-	private static SpriteTile addPlayer() {
+	private static SpriteTile addPlayer(Grid g) {
 		
-		SpriteTile player = playerBuilder.setType(SpriteType.standard).setPos(g1.position(0, 0)).build();
-		g2.addTile(player);
+		Tile player = SpriteFactory.create(Type.player, 0, 0);
+		player.setPos(g.position(0, 0));
+		g.addTile(player);
 		
-		return player;
+		return (SpriteTile) player;
 		
 	}
 
-	private static void gravelTiles() {
-		tile = gravelBuilder.setType(GroundType.gravel).setPos(g1.position(9, 7)).build();
+	private static void gravelTiles(Grid g1) {
+		tile = gravelBuilder.setType(GroundType.gravel).setPos(g1.position(9, 7)).setIndex(9, 7).build();
 		g1.addTile(tile);
-		tile = gravelBuilder.setType(GroundType.gravel).setPos(g1.position(9, 8)).build();
+		tile = gravelBuilder.setType(GroundType.gravel).setPos(g1.position(9, 8)).setIndex(9, 8).build();
 		g1.addTile(tile);
-		tile = gravelBuilder.setType(GroundType.gravel).setPos(g1.position(9, 9)).build();
-		g1.addTile(tile);
-	}
-
-	private static void mudTiles() {
-		tile = mudBuilder.setType(GroundType.mud).setPos(g1.position(8, 7)).build();
-		g1.addTile(tile);
-		tile = mudBuilder.setType(GroundType.mud).setPos(g1.position(8, 8)).build();
-		g1.addTile(tile);
-		tile = mudBuilder.setType(GroundType.mud).setPos(g1.position(8, 9)).build();
+		tile = gravelBuilder.setType(GroundType.gravel).setPos(g1.position(9, 9)).setIndex(9, 9).build();
 		g1.addTile(tile);
 	}
 
-	private static void beachTiles() {
-		tile = beachBuilder.setType(GroundType.beach).setPos(g1.position(6, 0)).build();
+	private static void mudTiles(Grid g1) {
+		tile = mudBuilder.setType(GroundType.mud).setPos(g1.position(8, 7)).setIndex(8, 7).build();
 		g1.addTile(tile);
-		tile = beachBuilder.setType(GroundType.beach).setPos(g1.position(6, 1)).build();
+		tile = mudBuilder.setType(GroundType.mud).setPos(g1.position(8, 8)).setIndex(8, 8).build();
 		g1.addTile(tile);
-		tile = beachBuilder.setType(GroundType.beach).setPos(g1.position(6, 2)).build();
-		g1.addTile(tile);
-		tile = beachBuilder.setType(GroundType.beach).setPos(g1.position(6, 3)).build();
-		g1.addTile(tile);
-		tile = beachBuilder.setType(GroundType.beach).setPos(g1.position(7, 3)).build();
-		g1.addTile(tile);
-		tile = beachBuilder.setType(GroundType.beach).setPos(g1.position(8, 4)).build();
+		tile = mudBuilder.setType(GroundType.mud).setPos(g1.position(8, 9)).setIndex(8, 9).build();
 		g1.addTile(tile);
 	}
 
-	private static void waterTiles() {
-		tile = waterBuilder.setType(GroundType.water).setPos(g1.position(9, 4)).build();
+	private static void beachTiles(Grid g1) {
+		tile = beachBuilder.setType(GroundType.beach).setPos(g1.position(6, 0)).setIndex(6, 0).build();
 		g1.addTile(tile);
-		tile = waterBuilder.setType(GroundType.water).setPos(g1.position(9, 3)).build();
+		tile = beachBuilder.setType(GroundType.beach).setPos(g1.position(6, 1)).setIndex(6, 1).build();
 		g1.addTile(tile);
-		tile = waterBuilder.setType(GroundType.water).setPos(g1.position(9, 2)).build();
+		tile = beachBuilder.setType(GroundType.beach).setPos(g1.position(6, 2)).setIndex(6, 2).build();
 		g1.addTile(tile);
-		tile = waterBuilder.setType(GroundType.water).setPos(g1.position(9, 1)).build();
+		tile = beachBuilder.setType(GroundType.beach).setPos(g1.position(6, 3)).setIndex(6, 3).build();
 		g1.addTile(tile);
-		tile = waterBuilder.setType(GroundType.water).setPos(g1.position(9, 0)).build();
+		tile = beachBuilder.setType(GroundType.beach).setPos(g1.position(7, 3)).setIndex(7, 3).build();
 		g1.addTile(tile);
-		tile = waterBuilder.setType(GroundType.water).setPos(g1.position(8, 3)).build();
-		g1.addTile(tile);
-		tile = waterBuilder.setType(GroundType.water).setPos(g1.position(8, 2)).build();
-		g1.addTile(tile);
-		tile = waterBuilder.setType(GroundType.water).setPos(g1.position(8, 1)).build();
-		g1.addTile(tile);
-		tile = waterBuilder.setType(GroundType.water).setPos(g1.position(8, 0)).build();
-		g1.addTile(tile);
-		tile = waterBuilder.setType(GroundType.water).setPos(g1.position(7, 2)).build();
-		g1.addTile(tile);
-		tile = waterBuilder.setType(GroundType.water).setPos(g1.position(7, 1)).build();
-		g1.addTile(tile);
-		tile = waterBuilder.setType(GroundType.water).setPos(g1.position(7, 0)).build();
+		tile = beachBuilder.setType(GroundType.beach).setPos(g1.position(8, 4)).setIndex(8, 4).build();
 		g1.addTile(tile);
 	}
 
-	private static void sandTiles() {
-		tile = sandBuilder.setType(GroundType.sand).setPos(g1.position(6, 4)).build();
+	private static void waterTiles(Grid g1) {
+		tile = waterBuilder.setType(GroundType.water).setPos(g1.position(9, 4)).setIndex(9, 4).build();
 		g1.addTile(tile);
-		tile = sandBuilder.setType(GroundType.sand).setPos(g1.position(7, 4)).build();
+		tile = waterBuilder.setType(GroundType.water).setPos(g1.position(9, 3)).setIndex(9, 3).build();
 		g1.addTile(tile);
-		tile = sandBuilder.setType(GroundType.sand).setPos(g1.position(6, 5)).build();
+		tile = waterBuilder.setType(GroundType.water).setPos(g1.position(9, 2)).setIndex(9, 2).build();
 		g1.addTile(tile);
-		tile = sandBuilder.setType(GroundType.sand).setPos(g1.position(7, 5)).build();
+		tile = waterBuilder.setType(GroundType.water).setPos(g1.position(9, 1)).setIndex(9, 1).build();
 		g1.addTile(tile);
-		tile = sandBuilder.setType(GroundType.sand).setPos(g1.position(8, 5)).build();
+		tile = waterBuilder.setType(GroundType.water).setPos(g1.position(9, 0)).setIndex(9, 0).build();
 		g1.addTile(tile);
-		tile = sandBuilder.setType(GroundType.sand).setPos(g1.position(9, 5)).build();
+		tile = waterBuilder.setType(GroundType.water).setPos(g1.position(8, 3)).setIndex(8, 3).build();
 		g1.addTile(tile);
-    	tile = sandBuilder.setType(GroundType.weeds).setPos(g1.position(5, 0)).build();
+		tile = waterBuilder.setType(GroundType.water).setPos(g1.position(8, 2)).setIndex(8, 2).build();
+		g1.addTile(tile);
+		tile = waterBuilder.setType(GroundType.water).setPos(g1.position(8, 1)).setIndex(8, 1).build();
+		g1.addTile(tile);
+		tile = waterBuilder.setType(GroundType.water).setPos(g1.position(8, 0)).setIndex(8, 0).build();
+		g1.addTile(tile);
+		tile = waterBuilder.setType(GroundType.water).setPos(g1.position(7, 2)).setIndex(7, 2).build();
+		g1.addTile(tile);
+		tile = waterBuilder.setType(GroundType.water).setPos(g1.position(7, 1)).setIndex(7, 1).build();
+		g1.addTile(tile);
+		tile = waterBuilder.setType(GroundType.water).setPos(g1.position(7, 0)).setIndex(7, 0).build();
+		g1.addTile(tile);
+	}
+
+	private static void sandTiles(Grid g1) {
+		tile = sandBuilder.setType(GroundType.sand).setPos(g1.position(6, 4)).setIndex(6, 4).build();
+		g1.addTile(tile);
+		tile = sandBuilder.setType(GroundType.sand).setPos(g1.position(7, 4)).setIndex(7, 4).build();
+		g1.addTile(tile);
+		tile = sandBuilder.setType(GroundType.sand).setPos(g1.position(6, 5)).setIndex(8, 4).build();
+		g1.addTile(tile);
+		tile = sandBuilder.setType(GroundType.sand).setPos(g1.position(7, 5)).setIndex(7, 5).build();
+		g1.addTile(tile);
+		tile = sandBuilder.setType(GroundType.sand).setPos(g1.position(8, 5)).setIndex(8, 5).build();
+		g1.addTile(tile);
+		tile = sandBuilder.setType(GroundType.sand).setPos(g1.position(9, 5)).setIndex(9, 5).build();
+		g1.addTile(tile);
+    	tile = sandBuilder.setType(GroundType.weeds).setPos(g1.position(5, 0)).setIndex(5, 0).build();
     	g1.addTile(tile);
-    	tile = sandBuilder.setType(GroundType.weeds).setPos(g1.position(5, 1)).build();
+    	tile = sandBuilder.setType(GroundType.weeds).setPos(g1.position(5, 1)).setIndex(5, 1).build();
     	g1.addTile(tile);
-    	tile = sandBuilder.setType(GroundType.weeds).setPos(g1.position(5, 2)).build();
+    	tile = sandBuilder.setType(GroundType.weeds).setPos(g1.position(5, 2)).setIndex(5, 2).build();
     	g1.addTile(tile);
-    	tile = sandBuilder.setType(GroundType.weeds).setPos(g1.position(5, 3)).build();
+    	tile = sandBuilder.setType(GroundType.weeds).setPos(g1.position(5, 3)).setIndex(5, 3).build();
     	g1.addTile(tile);
 	}
 	
-    private static void weedTiles() {
-    	tile = weedBuilder.setType(GroundType.weeds).setPos(g1.position(2, 2)).build();
+    private static void weedTiles(Grid g1) {
+    	tile = weedBuilder.setType(GroundType.weeds).setPos(g1.position(2, 2)).setIndex(2, 2).build();
     	g1.addTile(tile);
-    	tile = weedBuilder.setType(GroundType.weeds).setPos(g1.position(4, 0)).build();
+    	tile = weedBuilder.setType(GroundType.weeds).setPos(g1.position(4, 0)).setIndex(4, 0).build();
     	g1.addTile(tile);
-    	tile = weedBuilder.setType(GroundType.weeds).setPos(g1.position(4, 1)).build();
+    	tile = weedBuilder.setType(GroundType.weeds).setPos(g1.position(4, 1)).setIndex(4, 1).build();
     	g1.addTile(tile);
-    	tile = weedBuilder.setType(GroundType.weeds).setPos(g1.position(4, 2)).build();
+    	tile = weedBuilder.setType(GroundType.weeds).setPos(g1.position(4, 2)).setIndex(4, 2).build();
     	g1.addTile(tile);
-    	tile = weedBuilder.setType(GroundType.weeds).setPos(g1.position(4, 3)).build();
+    	tile = weedBuilder.setType(GroundType.weeds).setPos(g1.position(4, 3)).setIndex(4, 3).build();
     	g1.addTile(tile);
-    	tile = weedBuilder.setType(GroundType.weeds).setPos(g1.position(0, 9)).build();
+    	tile = weedBuilder.setType(GroundType.weeds).setPos(g1.position(0, 9)).setIndex(0, 9).build();
     	g1.addTile(tile);
-    	tile = weedBuilder.setType(GroundType.weeds).setPos(g1.position(1, 9)).build();
+    	tile = weedBuilder.setType(GroundType.weeds).setPos(g1.position(1, 9)).setIndex(1, 9).build();
     	g1.addTile(tile);
-    	tile = weedBuilder.setType(GroundType.weeds).setPos(g1.position(2, 9)).build();
+    	tile = weedBuilder.setType(GroundType.weeds).setPos(g1.position(2, 9)).setIndex(2, 9).build();
     	g1.addTile(tile);
-    	tile = weedBuilder.setType(GroundType.weeds).setPos(g1.position(3, 9)).build();
+    	tile = weedBuilder.setType(GroundType.weeds).setPos(g1.position(3, 9)).setIndex(3, 9).build();
     	g1.addTile(tile);
-    	tile = weedBuilder.setType(GroundType.weeds).setPos(g1.position(4, 9)).build();
+    	tile = weedBuilder.setType(GroundType.weeds).setPos(g1.position(4, 9)).setIndex(4, 9).build();
     	g1.addTile(tile);
 	}
 
-	private static void rockTiles() {
+	private static void rockTiles(Grid g1) {
     	
-    	tile = rockBuilder.setType(GroundType.rocks).setPos(g1.position(0, 0)).build();
+    	tile = rockBuilder.setType(GroundType.rocks).setPos(g1.position(0, 0)).setIndex(0, 0).build();
     	g1.addTile(tile);
-		tile = rockBuilder.setType(GroundType.rocks).setPos(g1.position(1, 1)).build();
+		tile = rockBuilder.setType(GroundType.rocks).setPos(g1.position(1, 1)).setIndex(1, 1).build();
 		g1.addTile(tile);
-		tile = rockBuilder.setType(GroundType.rocks).setPos(g1.position(3, 3)).build();
+		tile = rockBuilder.setType(GroundType.rocks).setPos(g1.position(3, 3)).setIndex(3, 3).build();
 		g1.addTile(tile);
-		tile = rockBuilder.setType(GroundType.rocks).setPos(g1.position(4, 4)).build();
+		tile = rockBuilder.setType(GroundType.rocks).setPos(g1.position(4, 4)).setIndex(4, 4).build();
 		g1.addTile(tile);
-		tile = rockBuilder.setType(GroundType.rocks).setPos(g1.position(5, 5)).build();
+		tile = rockBuilder.setType(GroundType.rocks).setPos(g1.position(5, 5)).setIndex(5, 5).build();
 		g1.addTile(tile);
-		tile = rockBuilder.setType(GroundType.rocks).setPos(g1.position(5, 4)).build();
+		tile = rockBuilder.setType(GroundType.rocks).setPos(g1.position(5, 4)).setIndex(5, 4).build();
 		g1.addTile(tile);
-		tile = rockBuilder.setType(GroundType.rocks).setPos(g1.position(5, 6)).build();
+		tile = rockBuilder.setType(GroundType.rocks).setPos(g1.position(5, 6)).setIndex(5, 6).build();
 		g1.addTile(tile);
-		tile = rockBuilder.setType(GroundType.rocks).setPos(g1.position(6, 6)).build();
+		tile = rockBuilder.setType(GroundType.rocks).setPos(g1.position(6, 6)).setIndex(6, 6).build();
 		g1.addTile(tile);
-		tile = rockBuilder.setType(GroundType.rocks).setPos(g1.position(7, 6)).build();
+		tile = rockBuilder.setType(GroundType.rocks).setPos(g1.position(7, 6)).setIndex(7, 6).build();
 		g1.addTile(tile);
-		tile = rockBuilder.setType(GroundType.rocks).setPos(g1.position(8, 6)).build();
+		tile = rockBuilder.setType(GroundType.rocks).setPos(g1.position(8, 6)).setIndex(8, 6).build();
 		g1.addTile(tile);
-		tile = rockBuilder.setType(GroundType.rocks).setPos(g1.position(9, 6)).build();
+		tile = rockBuilder.setType(GroundType.rocks).setPos(g1.position(9, 6)).setIndex(9, 6).build();
 		g1.addTile(tile);
-		tile = rockBuilder.setType(GroundType.rocks).setPos(g1.position(5, 9)).build();
+		tile = rockBuilder.setType(GroundType.rocks).setPos(g1.position(5, 9)).setIndex(5, 9).build();
 		g1.addTile(tile);
-		tile = rockBuilder.setType(GroundType.rocks).setPos(g1.position(6, 9)).build();
+		tile = rockBuilder.setType(GroundType.rocks).setPos(g1.position(6, 9)).setIndex(6, 9).build();
 		g1.addTile(tile);
 	}
 
-	private static void fillBlankTilesWithGrass() {
+	private static void fillBlankTilesWithGrass(Grid g1) {
     	
     	GroundBuilder tBuilder = new GroundBuilder();
     	GroundTile tile;
@@ -229,7 +220,7 @@ public class MatchJohnsDemo {
     		for(int j = 0; j< HORIZONTINALCELLS; j++) {
     			
     			if(!g1.ocupied(i, j)) {
-        			tile = tBuilder.setType(GroundType.grass).setPos(g1.position(i, j)).build();
+        			tile = tBuilder.setType(GroundType.grass).setPos(g1.position(i, j)).setIndex(i, j).build();
         			g1.addTile(tile);	
     			}
     		}

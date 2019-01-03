@@ -83,4 +83,25 @@ public class GridImpl implements Grid {
 	public void setPositions(Position[][] p) {
 		this.positions = p;
 	}
+	
+	public int[] getIndex(Position p) {
+		
+		int[] index = {0, 0};
+		
+		for (int i = 0; i < positions.length; i++) {
+			index[0] = i;
+			
+				for (int j = 0; j < positions[0].length; j++) {
+					
+					index[1] = j;
+					
+					if(p.getX() == positions[i][j].getX() && p.getY() == positions[i][j].getY()) {
+						return index;
+					}
+				}
+			
+		}
+		
+		return index;
+	}
 }

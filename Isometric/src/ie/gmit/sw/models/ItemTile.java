@@ -13,8 +13,8 @@ public class ItemTile extends Tile{
 		super();
 	}
 	
-	public ItemTile(Position p, BufferedImage i, Boolean c, ItemType type) {
-		super(p, i);
+	public ItemTile(Position p, int x, int y, BufferedImage i, Boolean c, ItemType type) {
+		super(p, i, x, y);
 		this.isCollectable = c;
 		this.type = type;
 	}

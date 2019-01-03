@@ -12,6 +12,8 @@ public class GroundBuilder {
 	private BufferedImage image;
 	private boolean isWalkable;
 	private GroundType type;
+	private int x;
+	private int y;
 	
 	public GroundBuilder() {
 		
@@ -36,7 +38,13 @@ public class GroundBuilder {
 		this.type = type;
 		return this;
 	}
-
+	
+	public GroundBuilder setIndex(int x, int y) {
+		this.x = x;
+		this.y = y;
+		return this;
+	}
+	
 	public GroundTile build() {
 		
 		if(this.image == null)
@@ -44,7 +52,7 @@ public class GroundBuilder {
 		
 			this.isWalkable = this.type.isWalkable();
 		
-	   return new GroundTile(pos, image, isWalkable, type);
+	   return new GroundTile(pos, x, y, image, isWalkable, type);
 	}
 
 }
