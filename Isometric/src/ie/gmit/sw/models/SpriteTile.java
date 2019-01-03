@@ -12,13 +12,15 @@ public class SpriteTile extends Tile{
 	private boolean engaged;
 	private SpriteType type;
 	private List<BufferedImage> images;
+	private int index = 3;
+	private int dirIndex = 3;
 
 	public SpriteTile() {
 		super();
 	}
 	
 	public SpriteTile(Position p, List<BufferedImage> images, boolean e, SpriteType t) {
-		super(p, images.get(0));
+		super(p, images.get(3));
 		this.engaged = e;
 		this.type = t;
 	}
@@ -41,16 +43,20 @@ public class SpriteTile extends Tile{
 	
 	public void move() {
 		
-		step(direction);
+		step();
 		
 		switch(direction.getOrientation()) {
 		case 1:
+			//down
 			break;
 		case 2:
+			//left
 			break;
 		case 3:
+			//right
 			break;
 		default:
+			//up
 			break;
 		}
 	}
@@ -60,11 +66,50 @@ public class SpriteTile extends Tile{
     }
     
 	public void setDirection(Direction d) {
+		
 		direction = d;
+		
+		switch(direction.getOrientation()) {
+		case 1:
+			//down
+			index = 3;
+			dirIndex = index;
+			this.setImage(type.getImg().get(index));
+			break;
+		case 2:
+			//left
+			index = 6;
+			dirIndex = index;
+			this.setImage(type.getImg().get(index));
+			break;
+		case 3:
+			index = 9;
+			dirIndex = index;
+			this.setImage(type.getImg().get(index));
+			//right
+			break;
+		default:
+			index = 0;
+			dirIndex = index;
+			this.setImage(type.getImg().get(index));
+			//up
+			break;
+		}
+		
 	}
 	
-	public BufferedImage step(Direction d) {
-		return null;
+	public BufferedImage step() {
+		
+		index ++;
+		
+		if(index == dirIndex+3) {
+			index = dirIndex;
+		}
+		
+		BufferedImage image =  type.getImg().get(index);
+		this.setImage(image);
+		
+		return image;
 	}
 
 	public BufferedImage getImage(int i) {

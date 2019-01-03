@@ -74,18 +74,18 @@ public class Sprite { //Sprite belongs in some sort of hierarchy....
 		step(direction);
 		
 		switch(direction.getOrientation()) {
-		case 1:
-			position.setY(position.getY() + 1); //UP
-			break;
-		case 2:
-			position.setX(position.getX() - 1); //DOWN
-			break;
-		case 3:
-			position.setX(position.getX() + 1); //LEFT
-			break;
-		default:
-			position.setY(position.getY() - 1); //RIGHT
-			break;
+			case 1:
+				position.setY(position.getY() + 1); //UP
+				break;
+			case 2:
+				position.setX(position.getX() - 1); //DOWN
+				break;
+			case 3:
+				position.setX(position.getX() + 1); //LEFT
+				break;
+			default:
+				position.setY(position.getY() - 1); //RIGHT
+				break;
 		}
 	}
 }

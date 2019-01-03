@@ -69,6 +69,14 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 		this.grid2 = g2;
 	}
 
+	public SpriteTile getPlayer() {
+		return player;
+	}
+
+	public void setPlayer(SpriteTile player) {
+		this.player = player;
+	}
+
 	@Override
 	public void keyPressed(KeyEvent e) {
 		

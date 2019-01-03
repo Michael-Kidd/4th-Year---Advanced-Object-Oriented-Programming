@@ -5,6 +5,7 @@ import ie.gmit.sw.builders.SpriteBuilder;
 import ie.gmit.sw.enums.GroundType;
 import ie.gmit.sw.enums.SpriteType;
 import ie.gmit.sw.models.GroundTile;
+import ie.gmit.sw.models.SpriteTile;
 import ie.gmit.sw.models.Tile;
 
 public class MatchJohnsDemo {
@@ -62,12 +63,24 @@ public class MatchJohnsDemo {
     	
     	g2 = g;
     	
-    	addPlayer();
 	}
     
-	private static void addPlayer() {
-		tile = playerBuilder.setType(SpriteType.standard).setPos(g1.position(0, 0)).build();
-		g2.addTile(tile);
+    public static SpriteTile addPlayer(int v, int h, Grid g) {
+    	HORIZONTINALCELLS = h;
+    	VERTCIALCELLS = v;
+    	
+    	g2 = g;
+    	
+    	return addPlayer();
+	}
+    
+	private static SpriteTile addPlayer() {
+		
+		SpriteTile player = playerBuilder.setType(SpriteType.standard).setPos(g1.position(0, 0)).build();
+		g2.addTile(player);
+		
+		return player;
+		
 	}
 
 	private static void gravelTiles() {

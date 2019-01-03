@@ -57,7 +57,9 @@ public class GameWindow {
 			f.setVisible(true);
 			
 			MatchJohnsDemo.addGroundTiles(VERTCIALCELLS, HORIZONTINALCELLS, g1);
-			MatchJohnsDemo.addSprites(VERTCIALCELLS, HORIZONTINALCELLS, g1);
+			MatchJohnsDemo.addObjects(VERTCIALCELLS, HORIZONTINALCELLS, g2);
+			view.setPlayer(MatchJohnsDemo.addPlayer(VERTCIALCELLS, HORIZONTINALCELLS, g2));
+			MatchJohnsDemo.addSprites(VERTCIALCELLS, HORIZONTINALCELLS, g2);
 			
 		}
 		catch (Exception e) {
