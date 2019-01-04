@@ -3,8 +3,8 @@ package ie.gmit.sw;
 import java.awt.image.BufferedImage;
 import java.util.List;
 
-public class SpriteTile extends Tile{
-	
+public class SpriteTile extends Tile {
+
 	private Direction direction = Direction.DOWN;
 	private boolean engaged;
 	private SpriteType type;
@@ -16,13 +16,13 @@ public class SpriteTile extends Tile{
 	public SpriteTile() {
 		super();
 	}
-	
+
 	public SpriteTile(Position p, int x, int y, List<BufferedImage> images, boolean e, SpriteType t) {
 		super(p, images.get(3), x, y);
 		this.engaged = e;
 		this.type = t;
 	}
-	
+
 	public boolean isEngaged() {
 		return engaged;
 	}
@@ -39,58 +39,58 @@ public class SpriteTile extends Tile{
 		this.type = type;
 	}
 
-    public Direction getDirection() {
-        return this.direction;
-    }
-    
+	public Direction getDirection() {
+		return this.direction;
+	}
+
 	public void setDirection(Direction d) {
-		
+
 		direction = d;
-		
-		switch(direction.getOrientation()) {
+
+		switch (direction.getOrientation()) {
 		case 1:
-			//down
-			if(index > 3 && index < 6) {
+			// down
+			if (index > 3 && index < 6) {
 				return;
 			}
 			changeImage(3);
 			break;
 		case 2:
-			//left
-			if(index > 6 && index < 9) {
+			// left
+			if (index > 6 && index < 9) {
 				return;
 			}
 			changeImage(6);
 			break;
 		case 3:
-			if(index > 9 && index < 11) {
+			if (index > 9 && index < 11) {
 				return;
 			}
 			changeImage(9);
-			//right
+			// right
 			break;
 		default:
-			if(index > 0 && index < 3) {
+			if (index > 0 && index < 3) {
 				return;
 			}
 			changeImage(0);
-			//up
+			// up
 			break;
 		}
-		
+
 	}
-	
+
 	public BufferedImage step() {
-		
-		index ++;
-		
-		if(index == dirIndex+3) {
+
+		index++;
+
+		if (index == dirIndex + 3) {
 			index = dirIndex;
 		}
-		
-		BufferedImage image =  type.getImg().get(index);
+
+		BufferedImage image = type.getImg().get(index);
 		this.setImage(image);
-		
+
 		return image;
 	}
 
@@ -101,7 +101,7 @@ public class SpriteTile extends Tile{
 	public void setImage(List<BufferedImage> images) {
 		this.images = images;
 	}
-	
+
 	private void changeImage(int i) {
 		index = i;
 		dirIndex = index;
@@ -112,5 +112,5 @@ public class SpriteTile extends Tile{
 
 		return canMove;
 	}
-	
+
 }

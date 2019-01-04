@@ -3,7 +3,7 @@ package ie.gmit.sw;
 public class Position {
 	private int x;
 	private int y;
-	
+
 	public Position(int x, int y) {
 		super();
 		this.x = x;

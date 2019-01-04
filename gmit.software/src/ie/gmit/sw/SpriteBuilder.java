@@ -11,11 +11,11 @@ public class SpriteBuilder {
 	private SpriteType type;
 	private int x;
 	private int y;
-	
+
 	public SpriteBuilder() {
-		
+
 	}
-	
+
 	public SpriteBuilder setPos(Position pos) {
 		this.pos = pos;
 		return this;
@@ -25,7 +25,7 @@ public class SpriteBuilder {
 		this.images = images;
 		return this;
 	}
-	
+
 	public SpriteBuilder setEngaged(boolean e) {
 		this.engaged = e;
 		return this;
@@ -41,15 +41,15 @@ public class SpriteBuilder {
 		this.y = y;
 		return this;
 	}
-	
+
 	public SpriteTile build() {
-		
-		if(this.images == null)
+
+		if (this.images == null)
 			this.images = this.type.getImg();
-		
+
 		this.engaged = this.type.isEngaged();
-		
-	   return new SpriteTile(pos, x, y, images, engaged, type);
+
+		return new SpriteTile(pos, x, y, images, engaged, type);
 	}
 
 }

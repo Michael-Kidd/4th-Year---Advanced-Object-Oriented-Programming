@@ -10,40 +10,40 @@ public class ItemBuilder {
 	private ItemType type;
 	private int x;
 	private int y;
-	
+
 	public ItemBuilder() {
-		
+
 	}
-	
+
 	public ItemBuilder setPos(Position pos) {
 		this.pos = pos;
 		return this;
 	}
-	
+
 	public ItemBuilder setCollectable(boolean isCollectable) {
 		this.isCollectable = isCollectable;
 		return this;
 	}
-	
+
 	public ItemBuilder setType(ItemType type) {
 		this.type = type;
 		return this;
 	}
-	
+
 	public ItemBuilder setIndex(int x, int y) {
 		this.x = x;
 		this.y = y;
 		return this;
 	}
 
-   public ItemTile build() {
-	   
-		if(this.image == null)
+	public ItemTile build() {
+
+		if (this.image == null)
 			this.image = this.type.getImg();
 
-			this.isCollectable = this.type.isCollectable();
-		
-	   return new ItemTile(pos, x, y, image, isCollectable, type);
+		this.isCollectable = this.type.isCollectable();
+
+		return new ItemTile(pos, x, y, image, isCollectable, type);
 	}
-	
+
 }

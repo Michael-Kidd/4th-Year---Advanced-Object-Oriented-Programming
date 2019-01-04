@@ -12,7 +12,6 @@ import javax.swing.JOptionPane;
 
 public class ImageLoaderImpl implements ImageLoader {
 
-	
 	public Iterator<BufferedImage> loadImages(String directory) {
 
 		File dir = new File(directory);
@@ -26,11 +25,11 @@ public class ImageLoaderImpl implements ImageLoader {
 
 				BufferedImage img = ImageIO.read(f);
 				images.add(img);
-				
+
 			} catch (IOException e) {
-				
+
 				JOptionPane.showMessageDialog(null, "Failed to Load Images", "Error", JOptionPane.ERROR_MESSAGE);
-				
+
 			}
 
 		}
@@ -38,5 +37,5 @@ public class ImageLoaderImpl implements ImageLoader {
 		return images.iterator();
 
 	}
-	
+
 }
