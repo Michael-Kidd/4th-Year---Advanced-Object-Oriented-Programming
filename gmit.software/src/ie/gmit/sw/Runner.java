@@ -36,7 +36,6 @@ public class Runner {
 	}
 
 	public static void loadResources() {
-
 		// load images files for the ground tiles and the objects
 		ImageLoader g = new ImageLoaderImpl();
 		Iterator<BufferedImage> itr = g.loadImages("./resources/images/ground");
