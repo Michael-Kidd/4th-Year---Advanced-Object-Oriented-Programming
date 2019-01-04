@@ -1,9 +1,8 @@
-package ie.gmit.sw.models;
+package ie.gmit.sw;
 
 import java.util.ArrayList;
 
-import ie.gmit.sw.Grid;
-import ie.gmit.sw.models.Position;
+import ie.gmit.sw.Position;
 
 public class GridImpl implements Grid {
 	

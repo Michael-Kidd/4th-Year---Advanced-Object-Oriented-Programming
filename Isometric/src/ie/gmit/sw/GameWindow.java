@@ -1,11 +1,7 @@
-package ie.gmit.sw.view;
+package ie.gmit.sw;
 
 import java.awt.*;
 import javax.swing.*;
-
-import ie.gmit.sw.Grid;
-import ie.gmit.sw.MatchJohnsDemo;
-import ie.gmit.sw.models.GridImpl;
 
 public class GameWindow {
 

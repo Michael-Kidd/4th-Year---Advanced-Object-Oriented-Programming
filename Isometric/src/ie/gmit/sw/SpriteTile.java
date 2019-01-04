@@ -1,10 +1,7 @@
-package ie.gmit.sw.models;
+package ie.gmit.sw;
 
 import java.awt.image.BufferedImage;
 import java.util.List;
-
-import ie.gmit.sw.enums.Direction;
-import ie.gmit.sw.enums.SpriteType;
 
 public class SpriteTile extends Tile{
 	

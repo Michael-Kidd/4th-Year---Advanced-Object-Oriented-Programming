@@ -1,11 +1,7 @@
-package ie.gmit.sw.builders;
+package ie.gmit.sw;
 
 import java.awt.image.BufferedImage;
 import java.util.List;
-
-import ie.gmit.sw.enums.SpriteType;
-import ie.gmit.sw.models.Position;
-import ie.gmit.sw.models.SpriteTile;
 
 public class SpriteBuilder {
 

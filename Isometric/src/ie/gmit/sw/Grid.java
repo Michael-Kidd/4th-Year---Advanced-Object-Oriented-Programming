@@ -2,11 +2,6 @@ package ie.gmit.sw;
 
 import java.util.ArrayList;
 
-import ie.gmit.sw.models.GroundTile;
-import ie.gmit.sw.models.ItemTile;
-import ie.gmit.sw.models.Position;
-import ie.gmit.sw.models.Tile;
-
 public interface Grid {
 	
 	ArrayList<Tile> getTiles();

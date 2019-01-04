@@ -1,4 +1,4 @@
-package ie.gmit.sw.models;
+package ie.gmit.sw;
 
 import java.awt.image.BufferedImage;
 

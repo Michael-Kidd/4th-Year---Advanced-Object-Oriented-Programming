@@ -1,10 +1,6 @@
-package ie.gmit.sw.builders;
+package ie.gmit.sw;
 
 import java.awt.image.BufferedImage;
-
-import ie.gmit.sw.enums.ItemType;
-import ie.gmit.sw.models.ItemTile;
-import ie.gmit.sw.models.Position;
 
 public class ItemBuilder {
 

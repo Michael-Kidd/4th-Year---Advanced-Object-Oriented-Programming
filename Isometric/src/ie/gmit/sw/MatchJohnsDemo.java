@@ -1,14 +1,6 @@
 package ie.gmit.sw;
 
-import ie.gmit.sw.builders.GroundBuilder;
-import ie.gmit.sw.builders.ItemBuilder;
-import ie.gmit.sw.enums.GroundType;
-import ie.gmit.sw.enums.ItemType;
-import ie.gmit.sw.enums.SpriteFactory;
-import ie.gmit.sw.enums.SpriteFactory.Type;
-import ie.gmit.sw.models.GroundTile;
-import ie.gmit.sw.models.SpriteTile;
-import ie.gmit.sw.models.Tile;
+import ie.gmit.sw.SpriteFactory.Type;
 
 public class MatchJohnsDemo {
 	
@@ -149,25 +141,21 @@ public class MatchJohnsDemo {
     	HORIZONTINALCELLS = h;
     	VERTCIALCELLS = v;
     	
-    	
+		Tile enemy = SpriteFactory.create(Type.knight, 9, 9);
+		enemy.setPos(g.position(9, 9));
+		g.addTile(enemy);
+		
 	}
     
     public static SpriteTile addPlayer(int v, int h, Grid g) {
     	HORIZONTINALCELLS = h;
     	VERTCIALCELLS = v;
     	
-    	
-    	return addPlayer(g);
-	}
-    
-	private static SpriteTile addPlayer(Grid g2) {
-		
 		Tile player = SpriteFactory.create(Type.player, 0, 0);
-		player.setPos(g2.position(0, 0));
-		g2.addTile(player);
+		player.setPos(g.position(0, 0));
+		g.addTile(player);
 		
 		return (SpriteTile) player;
-		
 	}
 
 	private static void gravelTiles(Grid g1) {

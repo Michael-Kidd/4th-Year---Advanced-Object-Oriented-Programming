@@ -1,4 +1,4 @@
-package ie.gmit.sw.enums;
+package ie.gmit.sw;
 
 public enum Direction {
 	

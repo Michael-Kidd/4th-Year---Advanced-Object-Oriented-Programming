@@ -8,12 +8,6 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
-import ie.gmit.sw.enums.GroundType;
-import ie.gmit.sw.enums.ItemType;
-import ie.gmit.sw.enums.SpriteType;
-import ie.gmit.sw.models.ImageLoaderImpl;
-import ie.gmit.sw.view.GameWindow;
-
 public class Runner {
 	
 	public static void main(String[] args) throws Exception {

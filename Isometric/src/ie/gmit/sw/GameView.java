@@ -1,4 +1,4 @@
-package ie.gmit.sw.view;
+package ie.gmit.sw;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -6,21 +6,18 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.Timer;
 
-import ie.gmit.sw.enums.Direction;
-import ie.gmit.sw.Grid;
-import ie.gmit.sw.models.ItemTile;
-import ie.gmit.sw.models.Position;
-import ie.gmit.sw.models.SpriteTile;
-import ie.gmit.sw.models.Tile;
-
 public class GameView extends JPanel implements ActionListener, KeyListener {
 
 	private static final long serialVersionUID = 777L;
+	
+	private boolean gameOver = false;
 	
 	private Timer timer;
 
 	private Grid grid1;
 	private Grid grid2;
+	
+	private int chestRemaining = 4;
 	
 	private static SpriteTile player;
 	
@@ -28,6 +25,11 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 
 		setBackground(Color.WHITE);
 		setDoubleBuffered(true);
+		
+		JOptionPane.showMessageDialog(null, 
+				"Control the player with the Arrow keys\nCollect the 4 chests to complete the game", 
+				"Game Rules",
+				JOptionPane.DEFAULT_OPTION);
 
 		timer = new Timer(100, this);
 		timer.start();
@@ -35,6 +37,19 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
+		
+		if(chestRemaining == 0)
+			gameOver = true;
+		
+		if(gameOver) {
+			JOptionPane.showMessageDialog(null, 
+					"You have completed the game",
+					"Game Over",
+					JOptionPane.DEFAULT_OPTION);
+			
+			System.exit(0);
+		}
+		
 		this.repaint();
 	}
 
@@ -88,22 +103,22 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 			if (e.getKeyCode() == KeyEvent.VK_RIGHT) 
 			{
 				player.setDirection(Direction.RIGHT);
-				move(grid2.getPositions()[player.getX()][player.getY()+1], player, grid1, grid2);
+				Movement.move(grid2.getPositions()[player.getX()][player.getY()+1], player, grid1, grid2, this);
 			}
 			else if (e.getKeyCode() == KeyEvent.VK_LEFT)
 			{
 				player.setDirection(Direction.LEFT);
-				move(grid2.getPositions()[player.getX()][player.getY()-1], player, grid1, grid2);
+				Movement.move(grid2.getPositions()[player.getX()][player.getY()-1], player, grid1, grid2, this);
 			}
 			else if (e.getKeyCode() == KeyEvent.VK_UP)
 			{
 				player.setDirection(Direction.UP);
-				move(grid2.getPositions()[player.getX()-1][player.getY()], player, grid1, grid2);
+				Movement.move(grid2.getPositions()[player.getX()-1][player.getY()], player, grid1, grid2, this);
 			}
 			else if (e.getKeyCode() == KeyEvent.VK_DOWN)
 			{
 				player.setDirection(Direction.DOWN);
-				move(grid2.getPositions()[player.getX()+1][player.getY()], player, grid1, grid2);
+				Movement.move(grid2.getPositions()[player.getX()+1][player.getY()], player, grid1, grid2, this);
 			}
 			else {
 				return;
@@ -123,29 +138,26 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 	@Override
 	public void keyTyped(KeyEvent e) {
 	}
-	
-	private void move(Position pos, SpriteTile sprite, Grid grid1, Grid grid2) {
-		
-		int []index = grid2.getIndex(pos);
-		
-		ItemTile itemAhead = grid2.getItemTile(index[0], index[1]);
-		
-		//This determines if the next tile can be walked on
-		if(!grid1.getGroundTile(index[0], index[1]).isWalkable() ||  itemAhead != null) {
-			
-			if(itemAhead.isCollectable()) {
-				grid2.getTiles().remove(itemAhead);
-			}
-			
-			return;
-		}
-		
-		player.step();
-		player.setPos(pos);
-		
-		player.setX(index[0]);
-		player.setY(index[1]);
+
+	public void addEnemy(Object addSprites) {
+		// TODO Auto-generated method stub
 		
 	}
-	
+
+	public boolean isGameOver() {
+		return gameOver;
+	}
+
+	public void setGameOver(boolean gameOver) {
+		this.gameOver = gameOver;
+	}
+
+	public int getChestRemaining() {
+		return chestRemaining;
+	}
+
+	public void setChestRemaining(int chestRemaining) {
+		this.chestRemaining += chestRemaining;
+	}
+
 }

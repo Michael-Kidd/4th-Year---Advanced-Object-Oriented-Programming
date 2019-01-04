@@ -1,8 +1,6 @@
-package ie.gmit.sw.models;
+package ie.gmit.sw;
 
 import java.awt.image.BufferedImage;
-
-import ie.gmit.sw.enums.ItemType;
 
 public class ItemTile extends Tile{
 	
