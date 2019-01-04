@@ -5,24 +5,33 @@ import java.util.List;
 
 public class SpriteTile extends Tile {
 
+	// the direction the character is facing
 	private Direction direction = Direction.DOWN;
+	// if the character is currently fighting
 	private boolean engaged;
+	// the type of character to show
 	private SpriteType type;
+	// the list of images used for the character movement
 	private List<BufferedImage> images;
+	// the index used for image positioning
 	private int index = 3;
+	// the current directory index used
 	private int dirIndex = 3;
+	// can the object move
 	private boolean canMove;
 
 	public SpriteTile() {
 		super();
 	}
 
+	// create an object
 	public SpriteTile(Position p, int x, int y, List<BufferedImage> images, boolean e, SpriteType t) {
 		super(p, images.get(3), x, y);
 		this.engaged = e;
 		this.type = t;
 	}
 
+	// setters and getters
 	public boolean isEngaged() {
 		return engaged;
 	}
@@ -45,8 +54,11 @@ public class SpriteTile extends Tile {
 
 	public void setDirection(Direction d) {
 
+		// set direction
 		direction = d;
 
+		// this is used to change the image of the object based on its direction
+		// it also will change the image when sprite moves
 		switch (direction.getOrientation()) {
 		case 1:
 			// down
@@ -80,6 +92,7 @@ public class SpriteTile extends Tile {
 
 	}
 
+	// the object steps
 	public BufferedImage step() {
 
 		index++;
@@ -93,6 +106,8 @@ public class SpriteTile extends Tile {
 
 		return image;
 	}
+
+	// setters and getters
 
 	public BufferedImage getImage(int i) {
 		return images.get(i);

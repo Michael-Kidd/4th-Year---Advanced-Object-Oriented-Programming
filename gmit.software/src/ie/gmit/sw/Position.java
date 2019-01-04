@@ -1,5 +1,10 @@
 package ie.gmit.sw;
 
+/*
+ * used to create a position for multiple types of objects, sprites, ground tiles and objects in the game
+ * everything has some position or it wont be painted
+ * */
+
 public class Position {
 	private int x;
 	private int y;

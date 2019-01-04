@@ -2,6 +2,11 @@ package ie.gmit.sw;
 
 import java.awt.image.BufferedImage;
 
+/*
+ * the super class used for the tile types, 
+ * all sprites, ground and objects are tiles
+ * */
+
 public class Tile {
 
 	private Position pos;
@@ -13,6 +18,7 @@ public class Tile {
 
 	}
 
+	//create a tile
 	public Tile(Position p, BufferedImage i, int x, int y) {
 		this.pos = p;
 		this.image = i;
@@ -20,6 +26,7 @@ public class Tile {
 		this.y = y;
 	}
 
+	//setters and getters
 	public Position getPos() {
 		return pos;
 	}

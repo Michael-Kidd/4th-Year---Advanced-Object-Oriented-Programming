@@ -2,6 +2,10 @@ package ie.gmit.sw;
 
 import java.util.ArrayList;
 
+/*This interface is used to access methods used for the creation of the grids
+ * it is also used for setting and retrieving info from those grids
+ * */
+
 public interface Grid {
 
 	ArrayList<Tile> getTiles();

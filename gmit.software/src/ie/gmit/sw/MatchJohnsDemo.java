@@ -4,6 +4,11 @@ import ie.gmit.sw.SpriteFactory.Type;
 
 public class MatchJohnsDemo {
 
+	/*
+	 * this class is simply used to load the tiles we need for testing it will match
+	 * the tile positions in the lecturers demonstation stub
+	 */
+
 	// the number of tiles across
 	private static int VERTCIALCELLS;
 	// the number of tiles down
@@ -29,6 +34,7 @@ public class MatchJohnsDemo {
 		HORIZONTINALCELLS = h;
 		VERTCIALCELLS = v;
 
+		// set the different ground tiles
 		rockTiles(g);
 		weedTiles(g);
 		sandTiles(g);
@@ -52,6 +58,7 @@ public class MatchJohnsDemo {
 
 	}
 
+	// add chests to the game
 	private static void addChests(Grid g2) {
 
 		tile = chestBuilder.setType(ItemType.chest).setPos(g2.position(4, 4)).setIndex(4, 4).build();
@@ -64,16 +71,19 @@ public class MatchJohnsDemo {
 		g2.addTile(tile);
 	}
 
+	// add sign posts
 	private static void addSigns(Grid g2) {
 		tile = signBuilder.setType(ItemType.signPost).setPos(g2.position(3, 2)).setIndex(3, 2).build();
 		g2.addTile(tile);
 	}
 
+	// add ladders
 	private static void addLadder(Grid g2) {
 		tile = ladderBuilder.setType(ItemType.ladder).setPos(g2.position(2, 9)).setIndex(2, 9).build();
 		g2.addTile(tile);
 	}
 
+	// add trees to the level
 	private static void addTrees(Grid g2) {
 
 		tile = treeBuilder.setType(ItemType.tree).setPos(g2.position(1, 0)).setIndex(1, 0).build();
@@ -137,6 +147,7 @@ public class MatchJohnsDemo {
 
 	}
 
+	// add character sprites eg. enemies
 	public static void addSprites(int v, int h, Grid g) {
 		HORIZONTINALCELLS = h;
 		VERTCIALCELLS = v;
@@ -147,6 +158,7 @@ public class MatchJohnsDemo {
 
 	}
 
+	// add the playters sprite
 	public static SpriteTile addPlayer(int v, int h, Grid g) {
 		HORIZONTINALCELLS = h;
 		VERTCIALCELLS = v;
@@ -294,6 +306,8 @@ public class MatchJohnsDemo {
 		g1.addTile(tile);
 	}
 
+	// fill in the remaining tiles with grass
+	// this could be used to fill in a larger map if needed
 	private static void fillBlankTilesWithGrass(Grid g1) {
 
 		GroundBuilder tBuilder = new GroundBuilder();
